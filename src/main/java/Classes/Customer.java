@@ -7,16 +7,20 @@ public class Customer {
 	private int id;
 	private String email;
 	private String password;
+	private String firstName;
+	private String lastName;
 	private String address;
-	private List<ProductVariation> cart;
+	private List<CartItem> cart;
 	private int cartSubtotal;
 	private List<Order> pastOrders;
 
-	public Customer(int id, String email, String password, String address, 
-	List<ProductVariation> cart, int cartSubtotal, List<Order> pastOrders) {
+	public Customer(int id, String email, String password, String firstName, String lastName, 
+	String address, List<CartItem> cart, int cartSubtotal, List<Order> pastOrders) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
 		this.cart = cart;
 		this.cartSubtotal = cartSubtotal;
@@ -48,6 +52,22 @@ public class Customer {
 		this.password = password;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -56,11 +76,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public List<ProductVariation> getCart() {
+	public List<CartItem> getCart() {
 		return cart;
 	}
 
-	public void setCart(List<ProductVariation> cart) {
+	public void setCart(List<CartItem> cart) {
 		this.cart = cart;
 	}
 
@@ -81,17 +101,18 @@ public class Customer {
 	}
 	
 	public void addToCart(ProductVariation p, int quantity) {
-		cart.add(p);
+		cart.add(new CartItem(p, quantity));
 		cartSubtotal += p.getPrice() * quantity;
 	}
 	
-	public void removeFromCart(OrderItem p) {
+	public void removeFromCart(CartItem p) {
 		for (int i = 0; i < cart.size(); i++) {
-			if (cart.get(i).getVariationId() == p.getProductVariation().getVariationId()) {
+			if (cart.get(i).getProductVariation().getVariationId() == p.getProductVariation().getVariationId()) {
 				cart.remove(i);
 				break;
 			}
 		}
+		cartSubtotal -= p.getProductVariation().getPrice(); 
 	}
 
 	public void emptyCart() {
@@ -104,10 +125,9 @@ public class Customer {
 		LocalDateTime orderTimestamp = LocalDateTime.now();
 		Order order = new Order(orderId, orderTimestamp, address);
 	
-		// Iterate through the products in the cart and create OrderItem objects
-		for (ProductVariation variation : cart) {
-			OrderItem orderItem = new OrderItem(variation, 1); // Assuming each variation is ordered once
-			order.addOrderItem(orderItem); // Add the order item to the order
+		// Iterate through the products in the cart and create CartItem objects
+		for (CartItem item : cart) { // Assuming each variation is ordered once
+			order.addOrderItem(item); // Add the order item to the order
 		}
 	
 		pastOrders.add(order); // Add the order to the list of past orders

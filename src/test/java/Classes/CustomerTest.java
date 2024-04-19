@@ -18,8 +18,8 @@ class CustomerTest {
     void setUp() {
         // Initialize a new customer instance before each test
         pastOrders = new ArrayList<>();
-        customer = new Customer(1, "test@example.com", "password", "123 Main St",
-                                new ArrayList<>(), 0, pastOrders);
+        customer = new Customer(1, "test@example.com", "password", "John", "Doe",
+                                "123 Main St", new ArrayList<>(), 0, pastOrders);
     }
 
     @Test
@@ -52,5 +52,12 @@ class CustomerTest {
         // Check if the order is placed and the cart is cleared
         assertEquals(initialPastOrdersSize + 1, pastOrders.size());
         assertTrue(customer.getCart().isEmpty());
+
+        // Check if the order item details are correct
+        Order lastOrder = pastOrders.get(pastOrders.size() - 1);
+        assertEquals(customer.getId() + Integer.toString(initialPastOrdersSize + 1), lastOrder.getOrderId());
+        assertEquals(LocalDateTime.now().getDayOfYear(), lastOrder.getOrderTimestamp().getDayOfYear()); // Check day of year for simplicity
+        assertEquals("123 Main St", lastOrder.getShippingAddress());
+        assertEquals(2, lastOrder.getOrderItems().size()); // Check if both items are added to the order
     }
 }

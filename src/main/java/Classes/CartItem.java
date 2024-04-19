@@ -1,10 +1,10 @@
 package Classes;
 
-public class OrderItem {
+public class CartItem {
     private ProductVariation productVariation;
     private int quantity;
 
-    public OrderItem(ProductVariation productVariation, int quantity) {
+    public CartItem(ProductVariation productVariation, int quantity) {
         this.productVariation = productVariation;
         this.quantity = quantity;
     }
