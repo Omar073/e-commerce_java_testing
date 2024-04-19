@@ -3,4 +3,41 @@
   <groupId>com.e_commerce_java_testing</groupId>
   <artifactId>com.e_commerce_java_testing</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+  <!-- Dependencies -->
+  <dependencies>
+    <!-- JavaFX -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>20.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>20.0.1</version>
+    </dependency>
+    <!-- Add other JavaFX dependencies as needed -->
+  </dependencies>
+
+  <!-- Build configuration -->
+  <build>
+    <plugins>
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <compilerArgs>
+            <arg>--module-path</arg>
+            <arg>${java.home}/lib/javafx.base.jar:${java.home}/lib/javafx.controls.jar:${java.home}/lib/javafx.fxml.jar:${java.home}/lib/javafx.graphics.jar:${java.home}/lib/javafx.media.jar:${java.home}/lib/javafx.swing.jar:${java.home}/lib/javafx.web.jar</arg>
+            <arg>--add-modules</arg>
+            <arg>javafx.controls,javafx.fxml</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
