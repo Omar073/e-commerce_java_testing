@@ -5,18 +5,14 @@ import java.util.List;
 public class Product {
     private String productID;
     private String productName;
-    private double price;
-    private int quantity;
     private String description;
     private String category;
 	private List<ProductVariation> _variations; // Non-nullable
 	private List<ProductProperty> _availableProperties; // What properties are offered
 
-    public Product(String productID, String productName, double price, int quantity, String description, String category, List<ProductVariation> _variations, List<ProductProperty> _availableProperties) {
+    public Product(String productID, String productName, String description, String category, List<ProductVariation> _variations, List<ProductProperty> _availableProperties) {
         this.productID = productID;
         this.productName = productName;
-        this.price = price;
-        this.quantity = quantity;
         this.description = description;
         this.category = category;
         this._variations = _variations;
@@ -38,22 +34,6 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getDescription() {
