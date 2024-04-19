@@ -2,73 +2,55 @@ package Classes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CustomerTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
+    private Customer customer;
+    private List<Order> pastOrders;
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
+    @BeforeEach
+    void setUp() {
+        // Initialize a new customer instance before each test
+        pastOrders = new ArrayList<>();
+        customer = new Customer(1, "test@example.com", "password", "123 Main St",
+                                new ArrayList<>(), 0, pastOrders);
+    }
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
+    @Test
+    void testAddToCart() {
+        ProductVariation productVariation = new ProductVariation(1, 1, 10, 5, true, null);
+        int initialCartSize = customer.getCart().size();
 
-	@AfterEach
-	void tearDown() throws Exception {
-	}
+        // Add a product to the cart
+        customer.addToCart(productVariation, 2);
 
-	@Test
-	void testGetEmail() {
-		fail("Not yet implemented");
-	}
+        // Check if the product is added to the cart and cart subtotal is updated correctly
+        assertEquals(initialCartSize + 1, customer.getCart().size());
+        assertEquals(20, customer.getCartSubtotal());
+    }
 
-	@Test
-	void testSetEmail() {
-		fail("Not yet implemented");
-	}
+    @Test
+    void testPlaceOrder() {
+        ProductVariation productVariation1 = new ProductVariation(1, 1, 10, 5, true, null);
+        ProductVariation productVariation2 = new ProductVariation(2, 1, 20, 3, true, null);
 
-	@Test
-	void testGetPassword() {
-		fail("Not yet implemented");
-	}
+        // Add products to the cart
+        customer.addToCart(productVariation1, 2);
+        customer.addToCart(productVariation2, 1);
 
-	@Test
-	void testSetPassword() {
-		fail("Not yet implemented");
-	}
+        int initialPastOrdersSize = pastOrders.size();
 
-	@Test
-	void testGetCart() {
-		fail("Not yet implemented");
-	}
+        // Place an order
+        customer.placeOrder();
 
-	@Test
-	void testGetRating() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetRating() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testAddToCart() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testRemoveFromCart() {
-		fail("Not yet implemented");
-	}
-
+        // Check if the order is placed and the cart is cleared
+        assertEquals(initialPastOrdersSize + 1, pastOrders.size());
+        assertTrue(customer.getCart().isEmpty());
+    }
 }

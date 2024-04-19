@@ -7,16 +7,14 @@ public class ProductVariation {
     private int productId;
     private int price;
     private int quantity;
-	private int rating;
     private boolean inStock;
     private List<ProductPropertyandValue> productPropertiesValues; // each property and it's value of a single variation
 
-    public ProductVariation(int variationId, int productId, int price, int quantity, int rating, boolean inStock, List<ProductPropertyandValue> productPropertiesValues) {
+    public ProductVariation(int variationId, int productId, int price, int quantity, boolean inStock, List<ProductPropertyandValue> productPropertiesValues) {
         this.variationId = variationId;
         this.productId = productId;
         this.price = price;
         this.quantity = quantity;
-        this.rating = rating;
         this.inStock = inStock;
         this.productPropertiesValues = productPropertiesValues;
     }
@@ -52,14 +50,6 @@ public class ProductVariation {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public boolean isInStock() {
