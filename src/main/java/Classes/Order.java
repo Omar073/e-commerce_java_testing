@@ -6,7 +6,7 @@ import java.util.List;
 public class Order {
     private int orderId;
     private LocalDateTime orderTimestamp;
-    private List<OrderItem> orderItems;
+    private List<CartItem> orderItems;
     private double orderSubtotal;
     private String shippingAddress;
 
@@ -34,11 +34,11 @@ public class Order {
         this.orderTimestamp = orderTimestamp;
     }
 
-    public List<OrderItem> getOrderItems() {
+    public List<CartItem> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
+    public void setOrderItems(List<CartItem> orderItems) {
         this.orderItems = orderItems;
     }
 
@@ -55,14 +55,14 @@ public class Order {
     }
 
     // Method to add an order item to the order
-    public void addOrderItem(OrderItem p) {
-        // OrderItem orderItem = new OrderItem(p, quantity);
+    public void addOrderItem(CartItem p) {
+        // CartItem orderItem = new CartItem(p, quantity);
         orderItems.add(p);
         recalculateOrderSubtotal();
     }
 
     // Method to remove an order item from the order
-    public void removeOrderItem(OrderItem orderItem) {
+    public void removeOrderItem(CartItem orderItem) {
         orderItems.remove(orderItem);
         recalculateOrderSubtotal();
     }
@@ -70,7 +70,7 @@ public class Order {
     // Method to recalculate the order subtotal based on order items
     private void recalculateOrderSubtotal() {
         double subtotal = 0.0;
-        for (OrderItem item : orderItems) {
+        for (CartItem item : orderItems) {
             subtotal += item.getProductVariation().getPrice() * item.getQuantity();
         }
         this.orderSubtotal = subtotal;
