@@ -102,10 +102,10 @@ public class Customer {
 	}
 	
 	public void addToCart(ProductVariation p, int quantity) {
-	    if (cart == null) {
+		if (cart == null) {
 	        cart = new ArrayList<>(); // Initialize the cart list if it's null
-	    }
-	    cart.add(new CartItem(p, quantity));
+		}
+		cart.add(new CartItem(p, quantity));
 	    cartSubtotal += p.getPrice() * quantity;
 	}
 	
