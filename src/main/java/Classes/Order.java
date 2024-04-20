@@ -1,6 +1,7 @@
 package Classes;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -15,6 +16,7 @@ public class Order {
         this.orderTimestamp = orderTimestamp;
         this.orderSubtotal = 0.0;
         this.shippingAddress = shippingAddress;
+        this.orderItems = new ArrayList<>(); // Initialize the orderItems list
     }
 
     // Getters and setters
