@@ -1,6 +1,7 @@
 package Classes;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
@@ -22,7 +23,7 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
-		this.cart = cart;
+	    this.cart = cart != null ? cart : new ArrayList<>(); // Initialize the cart list
 		this.cartSubtotal = cartSubtotal;
 		this.pastOrders = pastOrders;
 	}
@@ -101,8 +102,11 @@ public class Customer {
 	}
 	
 	public void addToCart(ProductVariation p, int quantity) {
-		cart.add(new CartItem(p, quantity));
-		cartSubtotal += p.getPrice() * quantity;
+	    if (cart == null) {
+	        cart = new ArrayList<>(); // Initialize the cart list if it's null
+	    }
+	    cart.add(new CartItem(p, quantity));
+	    cartSubtotal += p.getPrice() * quantity;
 	}
 	
 	public void removeFromCart(CartItem p) {
