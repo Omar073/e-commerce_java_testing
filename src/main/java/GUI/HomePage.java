@@ -29,8 +29,8 @@ public class HomePage extends Application {
         loginButton.setFont(new Font(20));
         loginButton.setOnAction(event -> {
             Stage loginStage = new Stage();
-            // LoginGUI loginGUI = new LoginGUI();
-            // loginGUI.start(loginStage);
+            LoginGUI loginGUI = new LoginGUI();
+            loginGUI.start(loginStage);
             primaryStage.close();
         });
 
