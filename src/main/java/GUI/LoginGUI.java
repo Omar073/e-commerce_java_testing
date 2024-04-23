@@ -2,7 +2,9 @@ package GUI;
 
 import java.util.ArrayList;
 
+import Classes.Admin;
 import Classes.Customer;
+import Classes.Person;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -86,10 +88,10 @@ public class LoginGUI extends Application {
         signupButton.setPrefSize(80, 40);
         signupButton.setFont(new Font(18));
         signupButton.setOnAction(event -> {
-            // Stage signupStage = new Stage();
-            // SignUpGUI signupGUI = new SignUpGUI("signup");
-            // signupGUI.start(signupStage);
-            // primaryStage.close();
+            Stage signupStage = new Stage();
+            SignUpGUI signupGUI = new SignUpGUI("signup");
+            signupGUI.start(signupStage);
+            primaryStage.close();
         });
 
         Button BackButton = new Button("Back");
@@ -148,15 +150,15 @@ public class LoginGUI extends Application {
         root.setMaxSize(panelWidth, panelHeight);
 
         // Set background image
-        Image backgroundImage = new Image("image.jpg");
-        BackgroundImage background = new BackgroundImage(
-            backgroundImage,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)
-        );
-        root.setBackground(new Background(background));
+        // Image backgroundImage = new Image("image.jpg");
+        // BackgroundImage background = new BackgroundImage(
+        //     backgroundImage,
+        //     BackgroundRepeat.NO_REPEAT,
+        //     BackgroundRepeat.NO_REPEAT,
+        //     BackgroundPosition.CENTER,
+        //     new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)
+        // );
+        // root.setBackground(new Background(background));
 
         Scene scene = new Scene(root, panelWidth, panelHeight);
         primaryStage.setScene(scene);
@@ -164,43 +166,43 @@ public class LoginGUI extends Application {
         primaryStage.show();
     }
 
-    // private boolean validateCredentials(int userID, String password, ArrayList<Person> persons, Stage primaryStage) {
+    private boolean validateCredentials(int userID, String password, ArrayList<Person> persons, Stage primaryStage) {
         // Perform your validation logic here
         // For demonstration purposes, assume that the ID is valid if it is a positive integer
-    //     boolean isValidID = false;
-    //     boolean isValidPassword = false; // Replace with your actual validation logic
-    //     for (Customer person : persons) {
-    //         if (person.getuser_ID() == userID && person.getPassword().equalsIgnoreCase(password) && person.getIsAdmin()) {
-    //             isValidID = true;
-    //             isValidPassword = true;
-    //             showSuccessAlert(person.getFirstName());
-    //             Stage adminStage = new Stage();
-    //             AdminGUI adminGUI = new AdminGUI(person);
-    //             adminGUI.start(adminStage);
-    //             primaryStage.close();
-    //         } 
-    //         else if (person.getuser_ID() == userID && person.getPassword().equalsIgnoreCase(password) && person.getIsAdmin() == false) {
-    //             isValidID = true;
-    //             isValidPassword = true;
-    //             showSuccessAlert(person.getFirstName());
-    //             // Stage readerStage = new Stage();
-    //             // ReaderGUI readerGUI = new ReaderGUI(person);
-    //             // readerGUI.start(readerStage);
-    //             primaryStage.close();
-    //         }
-    //     }
+        boolean isValidID = false;
+        boolean isValidPassword = false; // Replace with your actual validation logic
+        for (Person person : persons) {
+            if (person.getId() == userID && person.getPassword().equalsIgnoreCase(password) && person instanceof Admin) {
+                isValidID = true;
+                isValidPassword = true;
+                showSuccessAlert(person.getFirstName());
+                Stage adminStage = new Stage();
+                AdminGUI adminGUI = new AdminGUI(person);
+                adminGUI.start(adminStage);
+                primaryStage.close();
+            } 
+            else if (person.getId() == userID && person.getPassword().equalsIgnoreCase(password) && person instanceof Admin == false) {
+                isValidID = true;
+                isValidPassword = true;
+                showSuccessAlert(person.getFirstName());
+                Stage readerStage = new Stage();
+                // ReaderGUI readerGUI = new ReaderGUI(person);
+                // readerGUI.start(readerStage);
+                primaryStage.close();
+            }
+        }
 
-    //     if (isValidID == false || isValidPassword == false) {
-    //         showErrorAlert(primaryStage);
-    //         Stage loginStage = new Stage();
-    //         LoginGUI loginGUI = new LoginGUI();
-    //         loginGUI.start(loginStage);
-    //         primaryStage.close();
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // }
+        if (isValidID == false || isValidPassword == false) {
+            showErrorAlert(primaryStage);
+            Stage loginStage = new Stage();
+            LoginGUI loginGUI = new LoginGUI();
+            loginGUI.start(loginStage);
+            primaryStage.close();
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     private void showSuccessAlert(String name) {
         Alert alert = new Alert(AlertType.INFORMATION);

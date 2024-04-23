@@ -39,8 +39,8 @@ public class HomePage extends Application {
         signupButton.setFont(new Font(20));
         signupButton.setOnAction(event -> {
             Stage signupStage = new Stage();
-            // SignUpGUI signupGUI = new SignUpGUI("signup");
-            // signupGUI.start(signupStage);
+            SignUpGUI signupGUI = new SignUpGUI("signup");
+            signupGUI.start(signupStage);
             primaryStage.close();
         });
 
