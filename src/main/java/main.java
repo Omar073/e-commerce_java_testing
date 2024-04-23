@@ -2,6 +2,8 @@ import GUI.HomePage;
 
 public class main {
     public static void main(String[] args) throws Exception {
+        Shop Shop = new Shop(); //    CLI
+
         HomePage.main(args); //    GUI  
     }
 }

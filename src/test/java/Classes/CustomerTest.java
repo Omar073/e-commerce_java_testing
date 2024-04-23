@@ -55,7 +55,7 @@ class CustomerTest {
 
         // Check if the order item details are correct
         Order lastOrder = pastOrders.get(pastOrders.size() - 1);
-        assertEquals(String.valueOf(customer.getId()) + (initialPastOrdersSize + 1), Integer.toString(lastOrder.getOrderId()));
+        assertEquals(String.valueOf(customer.getId()) + "_" + (initialPastOrdersSize + 1), Integer.toString(lastOrder.getOrderId()));
         assertEquals(LocalDateTime.now().getDayOfYear(), lastOrder.getOrderTimestamp().getDayOfYear()); // Check day of year for simplicity
         assertEquals("123 Main St", lastOrder.getShippingAddress());
         assertEquals(2, lastOrder.getOrderItems().size()); // Check if both items are added to the order

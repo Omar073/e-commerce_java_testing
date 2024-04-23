@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "main",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "Run Application",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "Run Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Run with JavaFX",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "VS code java1_a7611f36",
+            "vmArgs": "--module-path \"M:\\Apps\\javafx-sdk-20.0.1\\lib\""
+            // "vmArgs": "--module-path \"M:\\Apps\\javafx-sdk-20.0.1\\lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}
