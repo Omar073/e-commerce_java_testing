@@ -2,6 +2,7 @@ package GUI;
 
 import java.util.ArrayList;
 
+
 import Classes.Admin;
 import Classes.Customer;
 import Classes.Person;  
@@ -31,8 +32,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import Classes.Shop;
 
 public class LoginGUI extends Application {
+
+
 
     private String enteredPassword;
     private String enteredID;
@@ -80,6 +84,7 @@ public class LoginGUI extends Application {
                 alert.showAndWait();
                 return;
             }
+
         
             // Check if enteredID contains non-numeric characters
             if (!enteredID.matches("\\d+")) {
@@ -180,17 +185,16 @@ public class LoginGUI extends Application {
     }
 
     private boolean validateCredentials(int userID, String password, ArrayList<Person> persons, Stage primaryStage) {
-        // Perform your validation logic here
-        // For demonstration purposes, assume that the ID is valid if it is a positive integer
+        
         boolean isValidID = false;
-        boolean isValidPassword = false; // Replace with your actual validation logic
+        boolean isValidPassword = false; 
         for (Person person : persons) {
             if (person.getId() == userID && person.getPassword().equalsIgnoreCase(password) && person instanceof Admin) {
                 isValidID = true;
                 isValidPassword = true;
                 showSuccessAlert(person.getFirstName());
                 Stage adminStage = new Stage();
-                AdminGUI adminGUI = new AdminGUI(person);
+                ProductsPage adminGUI = new ProductsPage();
                 adminGUI.start(adminStage);
                 primaryStage.close();
             } 
@@ -217,11 +221,15 @@ public class LoginGUI extends Application {
         }
     }
 
+
+    
+
     private void showSuccessAlert(String name) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Login Successful");
         alert.setHeaderText(null);
-        alert.setContentText("Welcome to the Library Management System " + name + "!");
+        alert.setContentText("Welcome " + name + " !");
+
         alert.showAndWait();
     }
 

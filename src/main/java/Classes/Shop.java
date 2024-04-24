@@ -8,16 +8,17 @@ public class Shop {
         public static ArrayList<Person> persons;
 
         // array list of books
-        static ArrayList<Product> products;
+        public static ArrayList<Product> products;
 
+       
         public Shop() {
                 persons = new ArrayList<>();
                 products = new ArrayList<>();
 
                 // Adding Admins
-                persons.add(new Admin(1, "admin1@example.com", "1", "Omar", "Ahmed", "123 Admin St"));
-                persons.add(new Admin(2, "admin2@example.com", "admin456", "Ahmed", "Elshekh", "456 Admin St"));
-                persons.add(new Admin(3, "admin3@example.com", "admin789", "Kareem", "Ahmed", "789 Admin St"));
+                persons.add(new Admin(1, "admin1@example.com", "admin123", "Admin", "Smith", "123 Admin St"));
+                persons.add(new Admin(2, "admin2@example.com", "admin456", "Admin", "Johnson", "456 Admin St"));
+                persons.add(new Admin(3, "admin3@example.com", "admin789", "Admin", "Taylor", "789 Admin St"));
                 persons.add(new Admin(4, "admin4@example.com", "admin101112", "Admin", "Brown", "101112 Admin St"));
 
                 // Adding Customers
@@ -60,7 +61,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "Large")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
 
                 products.add(new Product("Shirt1", "Classic Shirt", "Classic shirt for men", "Apparel",
                                 new ArrayList<>( // adding variations
@@ -86,7 +87,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "Large")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))) , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
 
                 products.add(new Product("Watch1", "Luxury Watch", "Luxury watch for men", "Watches",
                                 new ArrayList<>( // adding variations
@@ -112,7 +113,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "Medium")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
 
                 // Adding Products
                 products.add(new Product("Shoes1", "Running Shoes", "Comfortable running shoes", "Footwear",
@@ -139,7 +140,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "US 10")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
 
                 products.add(new Product("Laptop1", "Gaming Laptop", "High-performance gaming laptop", "Electronics",
                                 new ArrayList<>( // adding variations
@@ -165,7 +166,7 @@ public class Shop {
                                                                                                                                 "Storage",
                                                                                                                                 "1TB HDD")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Storage")))));
+                                                new ProductProperty("Storage"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
 
                 products.add(
                                 new Product("Headphones1", "Wireless Headphones", "Noise-canceling wireless headphones",
@@ -204,7 +205,7 @@ public class Shop {
                                                                                                                                                 "Bluetooth")))))),
                                                 new ArrayList<>(
                                                                 Arrays.asList(new ProductProperty("Color"),
-                                                                                new ProductProperty("Connectivity")))));
+                                                                                new ProductProperty("Connectivity"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
 
         }
 }
