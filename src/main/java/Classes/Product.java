@@ -9,14 +9,18 @@ public class Product {
     private String category;
 	private List<ProductVariation> _variations; // Non-nullable
 	private List<ProductProperty> _availableProperties; // What properties are offered
+    private String imageUrl  ;
+    private String price;
 
-    public Product(String productID, String productName, String description, String category, List<ProductVariation> _variations, List<ProductProperty> _availableProperties) {
+    public Product(String productID, String productName, String description, String category, List<ProductVariation> _variations, List<ProductProperty> _availableProperties,String imageUrl , String price) {
         this.productID = productID;
         this.productName = productName;
         this.description = description;
         this.category = category;
         this._variations = _variations;
         this._availableProperties = _availableProperties;
+        this.imageUrl = imageUrl;
+        this.price = price;
     }
 
     //setters and getters
@@ -30,6 +34,22 @@ public class Product {
 
     public String getProductName() {
         return productName;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setProductName(String productName) {

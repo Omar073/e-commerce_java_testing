@@ -1,22 +1,16 @@
+package Classes;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import Classes.Admin;
-import Classes.Customer;
-import Classes.Person;
-import Classes.Product;
-import Classes.ProductVariation;
-import Classes.ProductProperty;
-import Classes.ProductPropertyandValue;
 
 public class Shop {
 
         // array list of persons
-        static ArrayList<Person> persons;
+        public static ArrayList<Person> persons;
 
         // array list of books
-        static ArrayList<Product> products;
+        public static ArrayList<Product> products;
 
+       
         public Shop() {
                 persons = new ArrayList<>();
                 products = new ArrayList<>();
@@ -67,7 +61,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "Large")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))),"https://images.unsplash.com/photo-1551024601-5696f8f0d9c8", "250"));
 
                 products.add(new Product("Shirt1", "Classic Shirt", "Classic shirt for men", "Apparel",
                                 new ArrayList<>( // adding variations
@@ -93,7 +87,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "Large")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))) , "https://images.unsplash.com/photo-1551024601-5696f8f0d9c8", "250"));
 
                 products.add(new Product("Watch1", "Luxury Watch", "Luxury watch for men", "Watches",
                                 new ArrayList<>( // adding variations
@@ -119,7 +113,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "Medium")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))),"https://images.unsplash.com/photo-1551024601-5696f8f0d9c8", "250"));
 
                 // Adding Products
                 products.add(new Product("Shoes1", "Running Shoes", "Comfortable running shoes", "Footwear",
@@ -146,7 +140,7 @@ public class Shop {
                                                                                                                                 "Size",
                                                                                                                                 "US 10")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size")))));
+                                                new ProductProperty("Size"))),"https://images.unsplash.com/photo-1551024601-5696f8f0d9c8", "250"));
 
                 products.add(new Product("Laptop1", "Gaming Laptop", "High-performance gaming laptop", "Electronics",
                                 new ArrayList<>( // adding variations
@@ -172,7 +166,7 @@ public class Shop {
                                                                                                                                 "Storage",
                                                                                                                                 "1TB HDD")))))),
                                 new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Storage")))));
+                                                new ProductProperty("Storage"))),"https://images.unsplash.com/photo-1551024601-5696f8f0d9c8", "250"));
 
                 products.add(
                                 new Product("Headphones1", "Wireless Headphones", "Noise-canceling wireless headphones",
@@ -211,7 +205,7 @@ public class Shop {
                                                                                                                                                 "Bluetooth")))))),
                                                 new ArrayList<>(
                                                                 Arrays.asList(new ProductProperty("Color"),
-                                                                                new ProductProperty("Connectivity")))));
+                                                                                new ProductProperty("Connectivity"))),"https://images.unsplash.com/photo-1551024601-5696f8f0d9c8", "250"));
 
         }
 }

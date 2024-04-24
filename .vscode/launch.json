@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProductPage",
+            "request": "launch",
+            "mainClass": "GUI.ProductPage",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "LoginGUI",
+            "request": "launch",
+            "mainClass": "GUI.LoginGUI",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
             "name": "main",
             "request": "launch",
             "mainClass": "main",
@@ -28,7 +42,6 @@
             "mainClass": "App",
             "projectName": "VS code java1_a7611f36",
             "vmArgs": "--module-path \"M:\\Apps\\javafx-sdk-20.0.1\\lib\""
-            // "vmArgs": "--module-path \"M:\\Apps\\javafx-sdk-20.0.1\\lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
