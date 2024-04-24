@@ -1,3 +1,4 @@
+import Classes.Shop;
 import GUI.HomePage;
 
 public class main {

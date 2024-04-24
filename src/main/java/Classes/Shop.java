@@ -1,18 +1,11 @@
+package Classes;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import Classes.Admin;
-import Classes.Customer;
-import Classes.Person;
-import Classes.Product;
-import Classes.ProductVariation;
-import Classes.ProductProperty;
-import Classes.ProductPropertyandValue;
 
 public class Shop {
 
         // array list of persons
-        static ArrayList<Person> persons;
+        public static ArrayList<Person> persons;
 
         // array list of books
         static ArrayList<Product> products;
@@ -22,9 +15,9 @@ public class Shop {
                 products = new ArrayList<>();
 
                 // Adding Admins
-                persons.add(new Admin(1, "admin1@example.com", "admin123", "Admin", "Smith", "123 Admin St"));
-                persons.add(new Admin(2, "admin2@example.com", "admin456", "Admin", "Johnson", "456 Admin St"));
-                persons.add(new Admin(3, "admin3@example.com", "admin789", "Admin", "Taylor", "789 Admin St"));
+                persons.add(new Admin(1, "admin1@example.com", "admin123", "Omar", "Ahmed", "123 Admin St"));
+                persons.add(new Admin(2, "admin2@example.com", "admin456", "Ahmed", "Elshekh", "456 Admin St"));
+                persons.add(new Admin(3, "admin3@example.com", "admin789", "Kareem", "Ahmed", "789 Admin St"));
                 persons.add(new Admin(4, "admin4@example.com", "admin101112", "Admin", "Brown", "101112 Admin St"));
 
                 // Adding Customers

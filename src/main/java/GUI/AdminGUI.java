@@ -46,30 +46,30 @@ public class AdminGUI extends Application{
         adminLabel.setFont(Font.font("System", FontWeight.BOLD, 30.0));
         adminLabel.setEffect(new ColorAdjust());
 
-        Button addBookButton = new Button("Add new book");
-        addBookButton.setLayoutX(72.0);
-        addBookButton.setLayoutY(91.0);
-        addBookButton.setOnAction(event -> {
+        Button addProductButton = new Button("Add new product");
+        addProductButton.setLayoutX(72.0);
+        addProductButton.setLayoutY(91.0);
+        addProductButton.setOnAction(event -> {
             // NewBook newbook = new NewBook("add");
             // Stage newbooksstage = new Stage();
             // newbook.start(newbooksstage);
             primaryStage.close();
         });
 
-        Button removeBookButton = new Button("Remove a book");
-        removeBookButton.setLayoutX(286.0);
-        removeBookButton.setLayoutY(91.0);
-        removeBookButton.setOnAction(event -> {
+        Button removeProductButton = new Button("Remove a product");
+        removeProductButton.setLayoutX(286.0);
+        removeProductButton.setLayoutY(91.0);
+        removeProductButton.setOnAction(event -> {
             // SearchBooksGUI searchbooksGUI = new SearchBooksGUI("admin", "delete");
             // Stage searchbooksstage = new Stage();
             // searchbooksGUI.start(searchbooksstage);
             primaryStage.close();
         });
 
-        // Button updateBookButton = new Button("Update a book");
-        // updateBookButton.setLayoutX(498.0);
-        // updateBookButton.setLayoutY(91.0);
-        // updateBookButton.setOnAction(event -> {
+        // Button updateProductButton = new Button("Update a book");
+        // updateProductButton.setLayoutX(498.0);
+        // updateProductButton.setLayoutY(91.0);
+        // updateProductButton.setOnAction(event -> {
         //     SearchBooksGUI searchbooksGUI = new SearchBooksGUI("admin", "search");
         //     Stage searchbooksstage = new Stage();
         //     searchbooksGUI.start(searchbooksstage);
@@ -120,10 +120,10 @@ public class AdminGUI extends Application{
         // updateUserButton.setLayoutX(500.0);
         // updateUserButton.setLayoutY(157.0);
 
-        Button viewBooksButton = new Button("View all books");
-        viewBooksButton.setLayoutX(73.0);
-        viewBooksButton.setLayoutY(225.0);
-        viewBooksButton.setOnAction(event -> {
+        Button viewProductsButton = new Button("View all products");
+        viewProductsButton.setLayoutX(73.0);
+        viewProductsButton.setLayoutY(225.0);
+        viewProductsButton.setOnAction(event -> {
             // DisplayListGUI displayListGUI = new DisplayListGUI(Library.books, "admin");
             // Stage displaybooksstage = new Stage();
             // displayListGUI.start(displaybooksstage);
@@ -142,10 +142,10 @@ public class AdminGUI extends Application{
         });
 
 
-        Button searchBooksButton = new Button("Search books");
-        searchBooksButton.setLayoutX(75.0);
-        searchBooksButton.setLayoutY(284.0);
-        searchBooksButton.setOnAction(event -> {
+        Button searchProductsButton = new Button("Search products");
+        searchProductsButton.setLayoutX(75.0);
+        searchProductsButton.setLayoutY(284.0);
+        searchProductsButton.setOnAction(event -> {
             // SearchBooksGUI searchbooksGUI = new SearchBooksGUI("admin", "search");
             // Stage searchbooksstage = new Stage();
             // searchbooksGUI.start(searchbooksstage);
@@ -204,9 +204,9 @@ public class AdminGUI extends Application{
         // );
         // root.setBackground(new Background(background));
 
-        root.getChildren().addAll(adminLabel, addBookButton, removeBookButton, addUserButton,
-                removeUserButton, viewBooksButton, viewUsersButton, searchUsersButton,
-                searchBooksButton, viewCartButton, addToCartButton, blockUserButton,
+        root.getChildren().addAll(adminLabel, addProductButton, removeProductButton, addUserButton,
+                removeUserButton, viewProductsButton, viewUsersButton, searchUsersButton,
+                searchProductsButton, viewCartButton, addToCartButton, blockUserButton,
                 logoutButton);
 
         Scene scene = new Scene(root, 687, 474);

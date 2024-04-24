@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import Classes.Admin;
 import Classes.Customer;
-import Classes.Person;
+import Classes.Person;  
+import Classes.Shop;  
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -47,7 +48,7 @@ public class LoginGUI extends Application {
         loginLabel.setLayoutY(14.0);
         loginLabel.setPrefSize(177.0, 45.0);
         // loginLabel.setStyle("-fx-background-color: black;");
-        loginLabel.setTextFill(Color.WHITE);
+        loginLabel.setTextFill(Color.BLACK);
         loginLabel.setAlignment(javafx.geometry.Pos.CENTER);
         loginLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         loginLabel.setFont(Font.font("System", FontWeight.BOLD, 30.0));
@@ -71,7 +72,7 @@ public class LoginGUI extends Application {
         loginButton.setOnAction(event -> {
             enteredPassword = passwordField.getText();
             enteredID = idField.getText();
-            if(enteredID.isEmpty() || enteredPassword.isEmpty()){
+            if (enteredID.isEmpty() || enteredPassword.isEmpty()) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Login Error");
                 alert.setHeaderText(null);
@@ -79,8 +80,20 @@ public class LoginGUI extends Application {
                 alert.showAndWait();
                 return;
             }
-            // validateCredentials(Integer.parseInt(enteredID), enteredPassword, Library.persons, primaryStage);
+        
+            // Check if enteredID contains non-numeric characters
+            if (!enteredID.matches("\\d+")) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Login Error");
+                alert.setHeaderText(null);
+                alert.setContentText("ID must contain only numbers.");
+                alert.showAndWait();
+                return;
+            }
+        
+            validateCredentials(Integer.parseInt(enteredID), enteredPassword, Shop.persons, primaryStage);
         });
+        
 
         Button signupButton = new Button("Signup");
         loginButton.setLayoutX(350.0);
