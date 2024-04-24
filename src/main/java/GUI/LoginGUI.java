@@ -191,7 +191,7 @@ public class LoginGUI extends Application {
                 isValidPassword = true;
                 showSuccessAlert(person.getFirstName());
                 Stage adminStage = new Stage();
-                ProductPage adminGUI = new ProductPage();
+                ProductsPage adminGUI = new ProductsPage();
                 adminGUI.start(adminStage);
                 primaryStage.close();
             } 

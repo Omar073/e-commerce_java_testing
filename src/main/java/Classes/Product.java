@@ -10,9 +10,9 @@ public class Product {
 	private List<ProductVariation> _variations; // Non-nullable
 	private List<ProductProperty> _availableProperties; // What properties are offered
     private String imageUrl  ;
-    private String price;
+    private double  price;
 
-    public Product(String productID, String productName, String description, String category, List<ProductVariation> _variations, List<ProductProperty> _availableProperties,String imageUrl , String price) {
+    public Product(String productID, String productName, String description, String category, List<ProductVariation> _variations, List<ProductProperty> _availableProperties,String imageUrl , double  price) {
         this.productID = productID;
         this.productName = productName;
         this.description = description;
@@ -36,16 +36,16 @@ public class Product {
         return productName;
     }
 
-    public String getPrice() {
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {

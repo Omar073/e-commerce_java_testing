@@ -17,7 +17,7 @@ class ProductTest {
         // Initialize a new product instance before each test
         List<ProductVariation> variations = new ArrayList<>();
         List<ProductProperty> properties = new ArrayList<>();
-        product = new Product("123", "Test Product", "Description", "Category", variations, properties , "imageUrl" , "price");
+        product = new Product("123", "Test Product", "Description", "Category", variations, properties , "imageUrl" , 20);
     }
 
     @Test
