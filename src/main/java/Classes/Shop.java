@@ -15,7 +15,7 @@ public class Shop {
                 products = new ArrayList<>();
 
                 // Adding Admins
-                persons.add(new Admin(1, "admin1@example.com", "admin123", "Omar", "Ahmed", "123 Admin St"));
+                persons.add(new Admin(1, "admin1@example.com", "1", "Omar", "Ahmed", "123 Admin St"));
                 persons.add(new Admin(2, "admin2@example.com", "admin456", "Ahmed", "Elshekh", "456 Admin St"));
                 persons.add(new Admin(3, "admin3@example.com", "admin789", "Kareem", "Ahmed", "789 Admin St"));
                 persons.add(new Admin(4, "admin4@example.com", "admin101112", "Admin", "Brown", "101112 Admin St"));

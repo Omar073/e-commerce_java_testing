@@ -221,7 +221,7 @@ public class LoginGUI extends Application {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Login Successful");
         alert.setHeaderText(null);
-        alert.setContentText("Welcome to the Library Management System " + name + " !");
+        alert.setContentText("Welcome to the Library Management System " + name + "!");
         alert.showAndWait();
     }
 
