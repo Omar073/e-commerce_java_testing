@@ -19,26 +19,30 @@ class CustomerTest {
         // Initialize a new customer instance before each test
         pastOrders = new ArrayList<>();
         customer = new Customer(1, "test@example.com", "password", "John", "Doe",
-                                "123 Main St", new ArrayList<>(), 0, pastOrders);
+                "123 Main St", new ArrayList<>(), 0, pastOrders);
     }
 
     @Test
     void testAddToCart() {
-        Product product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        Product product = new Product("412", "Product 2", "Description 2", "Category 2", "Color 2", 10,
+                "Images/shoe3.png", 20.0);
         int initialCartSize = customer.getCart().size();
 
         // Add a product to the cart
         customer.addToCart(product, 2);
 
-        // Check if the product is added to the cart and cart subtotal is updated correctly
+        // Check if the product is added to the cart and cart subtotal is updated
+        // correctly
         assertEquals(initialCartSize + 1, customer.getCart().size());
         assertEquals(20, customer.getCartSubtotal());
     }
 
     @Test
     void testPlaceOrder() {
-        Product product1 = new Product("3", "Product 3", "Description 3", "Category 3", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
-        Product product2 = new Product("4", "Product 4", "Description 4", "Category 4", "Color 2", 30, "https://via.placeholder.com/150", 20.0);
+        Product product1 = new Product("3432", "Product 3", "Description 3", "Category 3", "Color 2", 10,
+                "Images/shoe3.jpeg", 20.0);
+        Product product2 = new Product("4232", "Product 4", "Description 4", "Category 4", "Color 2", 30,
+                "Images/shoe3.png", 20.0);
 
         // Add products to the cart
         customer.addToCart(product1, 2);
@@ -55,8 +59,10 @@ class CustomerTest {
 
         // Check if the order item details are correct
         Order lastOrder = pastOrders.get(pastOrders.size() - 1);
-        assertEquals(String.valueOf(customer.getId()) + "_" + (initialPastOrdersSize + 1), Integer.toString(lastOrder.getOrderId()));
-        assertEquals(LocalDateTime.now().getDayOfYear(), lastOrder.getOrderTimestamp().getDayOfYear()); // Check day of year for simplicity
+        assertEquals(String.valueOf(customer.getId()) + "_" + (initialPastOrdersSize + 1), lastOrder.getOrderId());
+        assertEquals(LocalDateTime.now().getDayOfYear(), lastOrder.getOrderTimestamp().getDayOfYear()); // Check day of
+                                                                                                        // year for
+                                                                                                        // simplicity
         assertEquals("123 Main St", lastOrder.getShippingAddress());
         assertEquals(2, lastOrder.getOrderItems().size()); // Check if both items are added to the order
     }

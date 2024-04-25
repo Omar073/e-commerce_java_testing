@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private int orderId;
+    private String orderId;
     private LocalDateTime orderTimestamp;
     private List<CartItem> orderItems;
     private double orderSubtotal;
     private String shippingAddress;
 
-    public Order(int orderId, LocalDateTime orderTimestamp, String shippingAddress) {
+    public Order(String orderId, LocalDateTime orderTimestamp, String shippingAddress) {
         this.orderId = orderId;
         this.orderTimestamp = orderTimestamp;
         this.orderSubtotal = 0.0;
@@ -20,11 +20,11 @@ public class Order {
     }
 
     // Getters and setters
-    public int getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

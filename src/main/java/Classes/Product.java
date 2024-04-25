@@ -8,7 +8,7 @@ public class Product {
     private String description;
     private String category;
 	private String color;
-    private int quantity;
+    private  int  quantity;
     private String imageUrl;
     private double  price;
 
