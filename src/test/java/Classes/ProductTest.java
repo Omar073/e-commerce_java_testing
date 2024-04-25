@@ -12,7 +12,7 @@ class ProductTest {
     @BeforeEach
     void setUp() {
         // Initialize a new product instance before each test
-        product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        product = new Product("2634", "Product 2", "Description 2", "Category 2", "Color 2", 10, "Images/shoe3.png", 20.0);
     }
 
     @Test
@@ -24,7 +24,7 @@ class ProductTest {
         assertEquals("Category 2", product.getCategory());
         assertEquals("Color 2", product.getColor());
         assertEquals(10, product.getQuantity());
-        assertEquals("https://via.placeholder.com/150", product.getImageUrl());
+        assertEquals("Images/shoe1.jpg", product.getImageUrl());
         assertEquals(20.0, product.getPrice());
     }
 
