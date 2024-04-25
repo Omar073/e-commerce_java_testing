@@ -12,7 +12,7 @@ public class Product {
     private String imageUrl;
     private double  price;
 
-    public Product(String productID, String productName, String description, String category, 
+    public Product( String productName, String description, String category, 
     String color,int quantity, String imageUrl, double  price) {
         this.productID = generateProductID();
         this.productName = productName;

@@ -24,7 +24,7 @@ class OrderTest {
 
     @Test
     void testAddOrderItem() {
-        Product product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        Product product = new Product( "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
         CartItem orderItem = new CartItem(product, 2);
 
         // Add an order item to the order
@@ -37,7 +37,7 @@ class OrderTest {
 
     @Test
     void testRemoveOrderItem() {
-        Product product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        Product product = new Product( "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
         CartItem orderItem = new CartItem(product, 2);
         order.addOrderItem(orderItem);
 
