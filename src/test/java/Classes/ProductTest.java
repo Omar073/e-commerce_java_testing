@@ -18,13 +18,13 @@ class ProductTest {
     @Test
     void testConstructor() {
         // Verify that the constructor sets the properties correctly
-        assertEquals("2", product.getProductID());
+        assertEquals("P0002", product.getProductID());
         assertEquals("Product 2", product.getProductName());
         assertEquals("Description 2", product.getDescription());
         assertEquals("Category 2", product.getCategory());
         assertEquals("Color 2", product.getColor());
         assertEquals(10, product.getQuantity());
-        assertEquals("Images/shoe1.jpg", product.getImageUrl());
+        assertEquals("Images/shoe3.png", product.getImageUrl());
         assertEquals(20.0, product.getPrice());
     }
 
