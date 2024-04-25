@@ -1,5 +1,4 @@
 package GUI;
-
 import Classes.Product;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -22,14 +21,20 @@ import javafx.stage.Stage;
 
 public class SingleProductPage extends Application {
     private Product product;
+    private BorderPane root;
 
     public SingleProductPage(Product product) {
         this.product = product;
     }
 
+    public void show(Stage primaryStage) {
+        start(primaryStage);
+        primaryStage.show();
+    }
+
     @Override
     public void start(Stage primaryStage) {
-        BorderPane root = new BorderPane();
+        root = new BorderPane();
         root.setPadding(new Insets(10));
 
         // Set background color
@@ -61,18 +66,18 @@ public class SingleProductPage extends Application {
             alert.showAndWait();
         });
 
-        // Button to go back
-        Button backButton = new Button("Back");
-        backButton.setFont(Font.font("Arial", 16));
-        backButton.setPrefWidth(150);
-        backButton.setOnAction(event -> {
-            // Create and show the products page
-            ProductsPage productPage = new ProductsPage();
-            productPage.start(new Stage());
+ // Button to go back
+Button backButton = new Button("Back");
+backButton.setFont(Font.font("Arial", 16));
+backButton.setPrefWidth(150);
+backButton.setOnAction(event -> {
+    // Create and show the products page with the current customer
+    // ProductsPage productPage = new ProductsPage(product.getCustomer());
+    // productPage.start(new Stage());
 
-            // Close the current window
-            primaryStage.close();
-        });
+    // Close the current window
+    primaryStage.close();
+});
 
         // Layout for buttons
         HBox buttonBox = new HBox(20, addToCartButton, backButton);
@@ -90,7 +95,10 @@ public class SingleProductPage extends Application {
         Scene scene = new Scene(root, 800, 600); // Set preferred window size
         primaryStage.setScene(scene);
         primaryStage.setTitle("Product Details");
-        primaryStage.show();
+    }
+
+    public BorderPane getRootNode() {
+        return root;
     }
 
     public static void main(String[] args) {

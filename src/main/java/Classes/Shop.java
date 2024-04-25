@@ -10,6 +10,10 @@ public class Shop {
         // array list of books
         public static ArrayList<Product> products;
 
+        // the current logged in person
+        public static Person currentLoggedInPerson;
+
+
        
         public Shop() {
                 persons = new ArrayList<>();
@@ -207,5 +211,13 @@ public class Shop {
                                                                 Arrays.asList(new ProductProperty("Color"),
                                                                                 new ProductProperty("Connectivity"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
 
+        }
+
+        public static Person getLoggedInPerson() {
+                return currentLoggedInPerson;
+        }
+
+        public static void setLoggedInPerson(Person person) {
+                currentLoggedInPerson = person;
         }
 }

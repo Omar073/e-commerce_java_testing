@@ -14,11 +14,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Classes.Customer;
+import Classes.Person;
 import Classes.Product;
 import Classes.Shop;
 
@@ -27,82 +28,95 @@ public class ProductsPage extends Application {
     // List to hold all products
     private List<Product> allProducts;
 
+    private Customer customer;
+
     @Override
     public void start(Stage primaryStage) {
-        BorderPane root = new BorderPane();
-        root.setPadding(new Insets(10));
+        // Get the current logged-in person from the Shop
+        Person loggedInPerson = Shop.getLoggedInPerson();
 
-        // Set background color
-        root.setBackground(new Background(new BackgroundFill(Color.rgb(30, 30, 30), null, null)));
+        // Check if the logged-in person is a customer
+        if (loggedInPerson instanceof Customer) {
+            // If the logged-in person is a customer, assign it to the customer variable
+            customer = (Customer) loggedInPerson;
 
- 
-              // Search bar
-              TextField searchField = new TextField();
-              searchField.setPromptText("Search products...");
-              searchField.setPrefWidth(300);
-      
-              // Cart button
-              Button cartButton = new Button("Cart");
-              cartButton.setFont(Font.font(14));
-              cartButton.setPrefWidth(80);
-                cartButton.setOnAction(event -> {
-                    MyCartPage myCartPage = new MyCartPage();
-                    myCartPage.start(primaryStage);
-                });
-      
-              // HBox to contain search field and cart button
-              HBox searchBarBox = new HBox(10, searchField, cartButton);
-              searchBarBox.setAlignment(Pos.CENTER_LEFT);
-              root.setTop(searchBarBox);
+            BorderPane root = new BorderPane();
+            root.setPadding(new Insets(10));
 
+            // Set background color
+            root.setBackground(new Background(new BackgroundFill(Color.rgb(30, 30, 30), null, null)));
 
-        // Product grid
-        GridPane productGrid = new GridPane();
-        productGrid.setAlignment(Pos.CENTER);
-        productGrid.setPadding(new Insets(20));
-        productGrid.setHgap(20);
-        productGrid.setVgap(20);
+            // Search bar
+            TextField searchField = new TextField();
+            searchField.setPromptText("Search products...");
+            searchField.setPrefWidth(300);
 
-        // Initialize list of products
-        allProducts = Shop.products;
+            // Cart button
+            Button cartButton = new Button("Cart");
+            cartButton.setFont(Font.font(14));
+            cartButton.setPrefWidth(80);
+            cartButton.setOnAction(event -> {
+                MyCartPage myCartPage = new MyCartPage();
+                myCartPage.start(primaryStage);
+            });
 
-        // Add product tiles to the grid
-        addProductTiles(productGrid, allProducts, primaryStage);
+            Label welcomeLabel = new Label("Welcome, " + customer.getFirstName() + "!");
+            welcomeLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+            welcomeLabel.setTextFill(Color.WHITE);
+            welcomeLabel.setAlignment(Pos.CENTER);
 
-        // ScrollPane to enable scrolling when more than 10 products
-        ScrollPane scrollPane = new ScrollPane(productGrid);
-        scrollPane.setFitToWidth(true);
-        scrollPane.setFitToHeight(true);
-        scrollPane.setPrefViewportHeight(400);
-        root.setCenter(scrollPane);
+            HBox searchBarBox = new HBox(10, welcomeLabel, searchField, cartButton);
+            searchBarBox.setAlignment(Pos.CENTER_LEFT);
+            root.setTop(searchBarBox);
 
-        // Search functionality
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            String searchText = newValue.trim().toLowerCase();
-            List<Product> filteredProducts = new ArrayList<>();
+            GridPane productGrid = new GridPane();
+            productGrid.setAlignment(Pos.CENTER);
+            productGrid.setPadding(new Insets(20));
+            productGrid.setHgap(20);
+            productGrid.setVgap(20);
 
-            if (searchText.isEmpty()) {
-                // If search text is empty, show all products
-                filteredProducts.addAll(allProducts);
-            } else {
-                // Filter products based on search text
-                for (Product product : allProducts) {
-                    if (product.getProductName().toLowerCase().contains(searchText) ||
-                            product.getDescription().toLowerCase().contains(searchText)) {
-                        filteredProducts.add(product);
+            allProducts = Shop.products;
+
+            addProductTiles(productGrid, allProducts, primaryStage);
+
+            // ScrollPane to enable scrolling when more than 10 products
+            ScrollPane scrollPane = new ScrollPane(productGrid);
+            scrollPane.setFitToWidth(true);
+            scrollPane.setFitToHeight(true);
+            scrollPane.setPrefViewportHeight(400);
+            root.setCenter(scrollPane);
+
+            searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+                String searchText = newValue.trim().toLowerCase();
+                List<Product> filteredProducts = new ArrayList<>();
+
+                if (searchText.isEmpty()) {
+                    // If search text is empty, show all products
+                    filteredProducts.addAll(allProducts);
+                } else {
+                    // Filter products based on search text
+                    for (Product product : allProducts) {
+                        if (product.getProductName().toLowerCase().contains(searchText) ||
+                                product.getDescription().toLowerCase().contains(searchText)) {
+                            filteredProducts.add(product);
+                        }
                     }
                 }
-            }
 
-            // Clear existing product grid and add filtered products
-            productGrid.getChildren().clear();
-            addProductTiles(productGrid, filteredProducts, primaryStage);
-        });
+                // Clear existing product grid and add filtered products
+                productGrid.getChildren().clear();
+                addProductTiles(productGrid, filteredProducts, primaryStage);
+            });
 
-        Scene scene = new Scene(root, 800, 600);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Product Page");
-        primaryStage.show();
+            Scene scene = new Scene(root, 800, 600);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Product Page");
+            primaryStage.show();
+        } else {
+            // If the logged-in person is not a customer, display an error message or redirect to login page
+            // You can handle this case according to your application's requirements
+            System.out.println("Error: Logged-in person is not a customer.");
+        }
     }
 
     private void addProductTiles(GridPane productGrid, List<Product> products, Stage primaryStage) {

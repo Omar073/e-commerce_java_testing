@@ -20,12 +20,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -185,43 +180,47 @@ public class LoginGUI extends Application {
     }
 
     private boolean validateCredentials(int userID, String password, ArrayList<Person> persons, Stage primaryStage) {
-        
         boolean isValidID = false;
         boolean isValidPassword = false; 
+        Person loggedInPerson = null;
+    
         for (Person person : persons) {
-            if (person.getId() == userID && person.getPassword().equalsIgnoreCase(password) && person instanceof Admin) {
+            if (person.getId() == userID && person.getPassword().equalsIgnoreCase(password)) {
                 isValidID = true;
                 isValidPassword = true;
-                showSuccessAlert(person.getFirstName());
-                Stage adminStage = new Stage();
-                ProductsPage adminGUI = new ProductsPage();
-                adminGUI.start(adminStage);
-                primaryStage.close();
+                loggedInPerson = person;
+                break; 
             } 
-            else if (person.getId() == userID && person.getPassword().equalsIgnoreCase(password) && person instanceof Admin == false) {
-                isValidID = true;
-                isValidPassword = true;
-                showSuccessAlert(person.getFirstName());
-                Stage readerStage = new Stage();
-                // ReaderGUI readerGUI = new ReaderGUI(person);
-                // readerGUI.start(readerStage);
+        }
+    
+        if (isValidID && isValidPassword) {
+            if (loggedInPerson instanceof Admin) {
+                showSuccessAlert(loggedInPerson.getFirstName());
+                Stage adminStage = new Stage();
+                // ProductsPage adminGUI = new ProductsPage();
+                // adminGUI.start(adminStage);
+                Shop.setLoggedInPerson(loggedInPerson);
+
+                primaryStage.close();
+            } else if (loggedInPerson instanceof Customer) {
+                showSuccessAlert(loggedInPerson.getFirstName());
+                Stage customerStage = new Stage();
+
+                Shop.setLoggedInPerson(loggedInPerson);
+                ProductsPage customerGUI = new ProductsPage();
+                customerGUI.start(customerStage);
                 primaryStage.close();
             }
-        }
-
-        if (isValidID == false || isValidPassword == false) {
+            return true;
+        } else {
             showErrorAlert(primaryStage);
             Stage loginStage = new Stage();
             LoginGUI loginGUI = new LoginGUI();
             loginGUI.start(loginStage);
             primaryStage.close();
             return false;
-        } else {
-            return true;
         }
     }
-
-
     
 
     private void showSuccessAlert(String name) {
