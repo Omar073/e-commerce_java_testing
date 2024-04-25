@@ -14,7 +14,7 @@ public class Shop {
         public static Person currentLoggedInPerson;
 
 
-       
+
         public Shop() {
                 persons = new ArrayList<>();
                 products = new ArrayList<>();
@@ -41,175 +41,16 @@ public class Shop {
                                 new ArrayList<>(), 0, new ArrayList<>()));
 
                 // Adding Products
-                products.add(new Product("Bag1", "Cool Bag", "Very cool bag", "Wearables",
-                                new ArrayList<>( // adding variations
-                                                Arrays.asList(
-                                                                new ProductVariation(1, 1, 10, 5, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Black"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "Medium")))),
-                                                                new ProductVariation(2, 1, 20, 3, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Blue"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "Large")))))),
-                                new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
-
-                products.add(new Product("Shirt1", "Classic Shirt", "Classic shirt for men", "Apparel",
-                                new ArrayList<>( // adding variations
-                                                Arrays.asList(
-                                                                new ProductVariation(3, 2, 30, 10, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "White"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "Medium")))),
-                                                                new ProductVariation(4, 2, 40, 5, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Blue"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "Large")))))),
-                                new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size"))) , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
-
-                products.add(new Product("Watch1", "Luxury Watch", "Luxury watch for men", "Watches",
-                                new ArrayList<>( // adding variations
-                                                Arrays.asList(
-                                                                new ProductVariation(5, 3, 200, 3, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Gold"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "Large")))),
-                                                                new ProductVariation(6, 3, 250, 2, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Silver"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "Medium")))))),
-                                new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
-
-                // Adding Products
-                products.add(new Product("Shoes1", "Running Shoes", "Comfortable running shoes", "Footwear",
-                                new ArrayList<>( // adding variations
-                                                Arrays.asList(
-                                                                new ProductVariation(7, 4, 80, 8, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Black"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "US 9")))),
-                                                                new ProductVariation(8, 4, 90, 5, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Gray"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Size",
-                                                                                                                                "US 10")))))),
-                                new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Size"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
-
-                products.add(new Product("Laptop1", "Gaming Laptop", "High-performance gaming laptop", "Electronics",
-                                new ArrayList<>( // adding variations
-                                                Arrays.asList(
-                                                                new ProductVariation(9, 5, 1500, 3, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Black"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Storage",
-                                                                                                                                "512GB SSD")))),
-                                                                new ProductVariation(10, 5, 1800, 2, true,
-                                                                                new ArrayList<>( // adding properties
-                                                                                                 // and values to each
-                                                                                                 // variation
-                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                "Color",
-                                                                                                                "Silver"),
-                                                                                                                new ProductPropertyandValue(
-                                                                                                                                "Storage",
-                                                                                                                                "1TB HDD")))))),
-                                new ArrayList<>(Arrays.asList(new ProductProperty("Color"),
-                                                new ProductProperty("Storage"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
-
-                products.add(
-                                new Product("Headphones1", "Wireless Headphones", "Noise-canceling wireless headphones",
-                                                "Electronics",
-                                                new ArrayList<>( // adding variations
-                                                                Arrays.asList(
-                                                                                new ProductVariation(11, 6, 100, 10,
-                                                                                                true,
-                                                                                                new ArrayList<>( // adding
-                                                                                                                 // properties
-                                                                                                                 // and
-                                                                                                                 // values
-                                                                                                                 // to
-                                                                                                                 // each
-                                                                                                                 // variation
-                                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                                "Color",
-                                                                                                                                "Black"),
-                                                                                                                                new ProductPropertyandValue(
-                                                                                                                                                "Connectivity",
-                                                                                                                                                "Bluetooth")))),
-                                                                                new ProductVariation(12, 6, 120, 7,
-                                                                                                true,
-                                                                                                new ArrayList<>( // adding
-                                                                                                                 // properties
-                                                                                                                 // and
-                                                                                                                 // values
-                                                                                                                 // to
-                                                                                                                 // each
-                                                                                                                 // variation
-                                                                                                                Arrays.asList(new ProductPropertyandValue(
-                                                                                                                                "Color",
-                                                                                                                                "White"),
-                                                                                                                                new ProductPropertyandValue(
-                                                                                                                                                "Connectivity",
-                                                                                                                                                "Bluetooth")))))),
-                                                new ArrayList<>(
-                                                                Arrays.asList(new ProductProperty("Color"),
-                                                                                new ProductProperty("Connectivity"))),"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vhu4hiu9ymYtPsoyBnG2WmrLcOx6YW2GcnjKmXa83g&s", 250));
+                products.add(new Product("1", "Product 1", "Description 1", "Category 1", "Color 1", 10, "https://via.placeholder.com/150", 10.0));
+                products.add(new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0));
+                products.add(new Product("3", "Product 3", "Description 3", "Category 3", "Color 3", 10, "https://via.placeholder.com/150", 30.0));
+                products.add(new Product("4", "Product 4", "Description 4", "Category 4", "Color 4", 10, "https://via.placeholder.com/150", 40.0));
+                products.add(new Product("5", "Product 5", "Description 5", "Category 5", "Color 5", 10, "https://via.placeholder.com/150", 50.0));
+                products.add(new Product("6", "Product 6", "Description 6", "Category 6", "Color 6", 10, "https://via.placeholder.com/150", 60.0));
+                products.add(new Product("7", "Product 7", "Description 7", "Category 7", "Color 7", 10, "https://via.placeholder.com/150", 70.0));
+                products.add(new Product("8", "Product 8", "Description 8", "Category 8", "Color 8", 10, "https://via.placeholder.com/150", 80.0));
+                products.add(new Product("9", "Product 9", "Description 9", "Category 9", "Color 9", 10, "https://via.placeholder.com/150", 90.0));
+                products.add(new Product("10", "Product 10", "Description 10", "Category 10", "Color 10", 10, "https://via.placeholder.com/150", 100.0));
 
         }
 

@@ -24,8 +24,8 @@ class OrderTest {
 
     @Test
     void testAddOrderItem() {
-        ProductVariation productVariation = new ProductVariation(1, 1, 10, 5, true, null);
-        CartItem orderItem = new CartItem(productVariation, 2);
+        Product product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        CartItem orderItem = new CartItem(product, 2);
 
         // Add an order item to the order
         order.addOrderItem(orderItem);
@@ -37,8 +37,8 @@ class OrderTest {
 
     @Test
     void testRemoveOrderItem() {
-        ProductVariation productVariation = new ProductVariation(1, 1, 10, 5, true, null);
-        CartItem orderItem = new CartItem(productVariation, 2);
+        Product product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        CartItem orderItem = new CartItem(product, 2);
         order.addOrderItem(orderItem);
 
         // Remove the order item from the order
