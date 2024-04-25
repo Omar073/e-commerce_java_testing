@@ -66,17 +66,17 @@ public class SingleProductPage extends Application {
             alert.showAndWait();
         });
 
- // Button to go back
-Button backButton = new Button("Back");
-backButton.setFont(Font.font("Arial", 16));
-backButton.setPrefWidth(150);
-backButton.setOnAction(event -> {
-    // Create and show the products page with the current customer
-    // ProductsPage productPage = new ProductsPage(product.getCustomer());
-    // productPage.start(new Stage());
+        // Button to go back
+        Button backButton = new Button("Back");
+        backButton.setFont(Font.font("Arial", 16));
+        backButton.setPrefWidth(150);
+        backButton.setOnAction(event -> {
+        // Create and show the products page with the current customer
+        // ProductsPage productPage = new ProductsPage(product.getCustomer());
+        // productPage.start(new Stage());
 
-    // Close the current window
-    primaryStage.close();
+        // Close the current window
+        primaryStage.close();
 });
 
         // Layout for buttons

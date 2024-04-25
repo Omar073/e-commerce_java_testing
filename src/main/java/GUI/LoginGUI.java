@@ -31,8 +31,6 @@ import Classes.Shop;
 
 public class LoginGUI extends Application {
 
-
-
     private String enteredPassword;
     private String enteredID;
 
@@ -79,7 +77,6 @@ public class LoginGUI extends Application {
                 alert.showAndWait();
                 return;
             }
-
         
             // Check if enteredID contains non-numeric characters
             if (!enteredID.matches("\\d+")) {
@@ -197,8 +194,9 @@ public class LoginGUI extends Application {
             if (loggedInPerson instanceof Admin) {
                 showSuccessAlert(loggedInPerson.getFirstName());
                 Stage adminStage = new Stage();
-                // ProductsPage adminGUI = new ProductsPage();
-                // adminGUI.start(adminStage);
+                Shop.setLoggedInPerson(loggedInPerson);
+                AdminGUI adminGUI = new AdminGUI();
+                adminGUI.start(adminStage);
                 Shop.setLoggedInPerson(loggedInPerson);
 
                 primaryStage.close();
