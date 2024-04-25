@@ -12,28 +12,20 @@ class OrderItemTest {
     @BeforeEach
     void setUp() {
         // Initialize a new order item instance before each test
-        ProductVariation productVariation = new ProductVariation(1, 1, 10, 5, true, null);
-        orderItem = new CartItem(productVariation, 2);
+        Product product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        orderItem = new CartItem(product, 2);
     }
 
     @Test
     void testGetProductVariation() {
         // Check if the correct product variation is returned
-        assertEquals(1, orderItem.getProductVariation().getVariationId());
+        assertEquals(1, orderItem.getProduct().getProductID());
     }
 
     @Test
     void testGetQuantity() {
         // Check if the correct quantity is returned
         assertEquals(2, orderItem.getQuantity());
-    }
-
-    @Test
-    void testSetProductVariation() {
-        // Set a new product variation and check if it's set correctly
-        ProductVariation newProductVariation = new ProductVariation(2, 1, 20, 3, true, null);
-        orderItem.setProductVariation(newProductVariation);
-        assertEquals(2, orderItem.getProductVariation().getVariationId());
     }
 
     @Test

@@ -2,9 +2,6 @@ package Classes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,57 +12,47 @@ class ProductTest {
     @BeforeEach
     void setUp() {
         // Initialize a new product instance before each test
-        List<ProductVariation> variations = new ArrayList<>();
-        List<ProductProperty> properties = new ArrayList<>();
-        product = new Product("123", "Test Product", "Description", "Category", variations, properties , "imageUrl" , 20);
+        product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
     }
 
     @Test
-    void testAddVariation() {
-        ProductVariation variation = new ProductVariation(1, 123, 10, 5, true, null);
-
-        // Add a variation to the product
-        product.addVariation(variation);
-
-        // Check if the variation is added
-        assertEquals(1, product.get_variations().size());
+    void testConstructor() {
+        // Verify that the constructor sets the properties correctly
+        assertEquals("2", product.getProductID());
+        assertEquals("Product 2", product.getProductName());
+        assertEquals("Description 2", product.getDescription());
+        assertEquals("Category 2", product.getCategory());
+        assertEquals("Color 2", product.getColor());
+        assertEquals(10, product.getQuantity());
+        assertEquals("https://via.placeholder.com/150", product.getImageUrl());
+        assertEquals(20.0, product.getPrice());
     }
 
     @Test
-    void testRemoveVariation() {
-        ProductVariation variation = new ProductVariation(1, 123, 10, 5, true, null);
-        product.addVariation(variation);
+    void testSettersAndGetters() {
+        // Test setters and getters for all properties
+        product.setProductID("3");
+        assertEquals("3", product.getProductID());
 
-        // Remove the variation from the product
-        product.removeVariation(variation);
+        product.setProductName("New Product Name");
+        assertEquals("New Product Name", product.getProductName());
 
-        // Check if the variation is removed
-        assertEquals(0, product.get_variations().size());
+        product.setDescription("New Description");
+        assertEquals("New Description", product.getDescription());
+
+        product.setCategory("New Category");
+        assertEquals("New Category", product.getCategory());
+
+        product.setColor("New Color");
+        assertEquals("New Color", product.getColor());
+
+        product.setQuantity(15);
+        assertEquals(15, product.getQuantity());
+
+        product.setImageUrl("https://new-image-url.com");
+        assertEquals("https://new-image-url.com", product.getImageUrl());
+
+        product.setPrice(25.0);
+        assertEquals(25.0, product.getPrice());
     }
-
-    @Test
-    void testAddProperty() {
-        ProductProperty property = new ProductProperty("Color");
-
-        // Add a property to the product
-        product.addProperty(property);
-
-        // Check if the property is added
-        assertEquals(1, product.get_availableProperties().size());
-    }
-
-    @Test
-    void testRemoveProperty() {
-        ProductProperty property = new ProductProperty("Color");
-        product.addProperty(property);
-
-        // Remove the property from the product
-        product.removeProperty(property);
-
-        // Check if the property is removed
-        assertEquals(0, product.get_availableProperties().size());
-    }
-
-    // Test getters and setters for other attributes
-
 }

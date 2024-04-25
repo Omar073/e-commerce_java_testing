@@ -42,7 +42,7 @@ public class Customer extends Person{
 		this.pastOrders = pastOrders;
 	}
 	
-	public void addToCart(ProductVariation p, int quantity) {
+	public void addToCart(Product p, int quantity) {
 		if (cart == null) {
 	        cart = new ArrayList<>(); // Initialize the cart list if it's null
 		}
@@ -52,12 +52,12 @@ public class Customer extends Person{
 	
 	public void removeFromCart(CartItem p) {
 		for (int i = 0; i < cart.size(); i++) {
-			if (cart.get(i).getProductVariation().getVariationId() == p.getProductVariation().getVariationId()) {
+			if (cart.get(i).getProduct().getProductID() == p.getProduct().getProductID()) {
 				cart.remove(i);
 				break;
 			}
 		}
-		cartSubtotal -= p.getProductVariation().getPrice(); 
+		cartSubtotal -= p.getProduct().getPrice(); 
 	}
 
 	public void emptyCart() {

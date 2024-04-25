@@ -73,7 +73,7 @@ public class Order {
     private void recalculateOrderSubtotal() {
         double subtotal = 0.0;
         for (CartItem item : orderItems) {
-            subtotal += item.getProductVariation().getPrice() * item.getQuantity();
+            subtotal += item.getProduct().getPrice() * item.getQuantity();
         }
         this.orderSubtotal = subtotal;
     }

@@ -1,21 +1,21 @@
 package Classes;
 
 public class CartItem {
-    private ProductVariation productVariation;
+    private Product product;
     private int quantity;
 
-    public CartItem(ProductVariation productVariation, int quantity) {
-        this.productVariation = productVariation;
+    public CartItem(Product product, int quantity) {
+        this.product = product;
         this.quantity = quantity;
     }
 
     // Getters and setters
-    public ProductVariation getProductVariation() {
-        return productVariation;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductVariation(ProductVariation productVariation) {
-        this.productVariation = productVariation;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {

@@ -24,11 +24,11 @@ class CustomerTest {
 
     @Test
     void testAddToCart() {
-        ProductVariation productVariation = new ProductVariation(1, 1, 10, 5, true, null);
+        Product product = new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
         int initialCartSize = customer.getCart().size();
 
         // Add a product to the cart
-        customer.addToCart(productVariation, 2);
+        customer.addToCart(product, 2);
 
         // Check if the product is added to the cart and cart subtotal is updated correctly
         assertEquals(initialCartSize + 1, customer.getCart().size());
@@ -37,12 +37,12 @@ class CustomerTest {
 
     @Test
     void testPlaceOrder() {
-        ProductVariation productVariation1 = new ProductVariation(1, 1, 10, 5, true, null);
-        ProductVariation productVariation2 = new ProductVariation(2, 1, 20, 3, true, null);
+        Product product1 = new Product("3", "Product 3", "Description 3", "Category 3", "Color 2", 10, "https://via.placeholder.com/150", 20.0);
+        Product product2 = new Product("4", "Product 4", "Description 4", "Category 4", "Color 2", 30, "https://via.placeholder.com/150", 20.0);
 
         // Add products to the cart
-        customer.addToCart(productVariation1, 2);
-        customer.addToCart(productVariation2, 1);
+        customer.addToCart(product1, 2);
+        customer.addToCart(product2, 1);
 
         int initialPastOrdersSize = pastOrders.size();
 
