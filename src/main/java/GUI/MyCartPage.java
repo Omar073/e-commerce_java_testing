@@ -71,12 +71,10 @@ public class MyCartPage extends Application {
             checkoutButton.setFont(Font.font(16));
             checkoutButton.setPrefWidth(150);
             checkoutButton.setOnAction(event -> {
-                // Add logic to process the checkout
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Checkout");
-                alert.setHeaderText(null);
-                alert.setContentText("Checkout completed!");
-                alert.showAndWait();
+                primaryStage.close();
+                CheckoutPage checkoutPage = new CheckoutPage();
+                checkoutPage.start(new Stage());
+              
             });
 
             // Bottom layout for total value and checkout button
@@ -88,7 +86,7 @@ public class MyCartPage extends Application {
             root.setCenter(scrollPane);
             root.setBottom(bottomLayout);
 
-            Scene scene = new Scene(root, 600, 400);
+            Scene scene = new Scene(root, 800, 600);
             primaryStage.setScene(scene);
             primaryStage.setTitle("My Cart");
             primaryStage.show();

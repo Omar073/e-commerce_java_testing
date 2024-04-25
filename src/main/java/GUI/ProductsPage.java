@@ -32,12 +32,9 @@ public class ProductsPage extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Get the current logged-in person from the Shop
         Person loggedInPerson = Shop.getLoggedInPerson();
 
-        // Check if the logged-in person is a customer
         if (loggedInPerson instanceof Customer) {
-            // If the logged-in person is a customer, assign it to the customer variable
             customer = (Customer) loggedInPerson;
 
             BorderPane root = new BorderPane();
@@ -65,9 +62,27 @@ public class ProductsPage extends Application {
             welcomeLabel.setTextFill(Color.WHITE);
             welcomeLabel.setAlignment(Pos.CENTER);
 
+            // Inside the start method of ProductsPage class
+
+            Button logoutButton = new Button("Logout");
+            logoutButton.setFont(Font.font(14));
+            logoutButton.setPrefWidth(80);
+            logoutButton.setOnAction(event -> {
+                // Logout functionality
+                Shop.setLoggedInPerson(null);
+                primaryStage.close(); // Close current window
+                LoginGUI loginScreen = new LoginGUI();
+                loginScreen.start(new Stage()); // Open login screen
+            });
+
             HBox searchBarBox = new HBox(10, welcomeLabel, searchField, cartButton);
             searchBarBox.setAlignment(Pos.CENTER_LEFT);
             root.setTop(searchBarBox);
+
+            // Add logout button to the top-right corner
+            HBox topRightBox = new HBox(logoutButton);
+            topRightBox.setAlignment(Pos.CENTER_RIGHT);
+            searchBarBox.getChildren().add(topRightBox);
 
             GridPane productGrid = new GridPane();
             productGrid.setAlignment(Pos.CENTER);
@@ -113,8 +128,7 @@ public class ProductsPage extends Application {
             primaryStage.setTitle("Product Page");
             primaryStage.show();
         } else {
-            // If the logged-in person is not a customer, display an error message or redirect to login page
-            // You can handle this case according to your application's requirements
+            
             System.out.println("Error: Logged-in person is not a customer.");
         }
     }
@@ -154,7 +168,8 @@ class ProductTile extends VBox {
         setAlignment(Pos.TOP_CENTER);
         setSpacing(10);
         setPadding(new Insets(10));
-        setStyle("-fx-background-color: #f5f5f5; -fx-border-color: #dddddd; -fx-border-width: 1px; -fx-border-radius: 5px;");
+        setStyle(
+                "-fx-background-color: #f5f5f5; -fx-border-color: #dddddd; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
         // Product image
         ImageView imageView = new ImageView(new Image(product.getImageUrl()));

@@ -43,7 +43,6 @@ public class SingleProductPage extends Application {
         Person loggedInPerson = Shop.getLoggedInPerson();
 
         if (loggedInPerson instanceof Customer) {
-            // If the logged-in person is a customer, assign it to the customer variable
             customer = (Customer) loggedInPerson;
 
         root = new BorderPane();
