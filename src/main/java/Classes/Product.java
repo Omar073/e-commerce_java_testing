@@ -1,6 +1,8 @@
 package Classes;
 
 public class Product {
+    private static int lastGeneratedId = 0;
+
     private String productID;
     private String productName;
     private String description;
@@ -12,7 +14,7 @@ public class Product {
 
     public Product(String productID, String productName, String description, String category, 
     String color,int quantity, String imageUrl, double  price) {
-        this.productID = productID;
+        this.productID = generateProductID();
         this.productName = productName;
         this.description = description;
         this.category = category;
@@ -85,6 +87,10 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+    private String generateProductID() {
+        lastGeneratedId++; // Increment the last generated ID
+        return "P" + String.format("%04d", lastGeneratedId); // Format the ID with leading zeros
     }
 
 }
