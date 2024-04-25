@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -50,11 +51,37 @@ public class MyCartPage extends Application {
             List<CartItem> cart = customer.getCart();
 
             // Iterate through the cart items and display them
+            // Iterate through the cart items and display them
             for (CartItem item : cart) {
                 Product product = item.getProduct();
                 int quantity = item.getQuantity();
                 Label itemLabel = new Label(product.getProductName() + " - Quantity: " + quantity);
-                cartItems.getChildren().add(itemLabel);
+                Button removeButton = new Button("Remove");
+                removeButton.setOnAction(event -> {
+                    // Remove the product from the cart
+                    customer.removeFromCart(item);
+                    // Refresh the cart page
+                    primaryStage.close();
+                    MyCartPage myCartPage = new MyCartPage();
+                    myCartPage.start(new Stage());
+                });
+
+                Button increaseButton = new Button("+");
+                increaseButton.setOnAction(event -> {
+                    String result = customer.increaseQuantity(item);
+                    updateCartDisplay(primaryStage, root);
+                    showAlert(result);
+                });
+
+                Button decreaseButton = new Button("-");
+                decreaseButton.setOnAction(event -> {
+                    String result = customer.decreaseQuantity(item);
+                    updateCartDisplay(primaryStage, root);
+                    showAlert(result);
+                });
+
+                HBox quantityControl = new HBox(5, increaseButton, decreaseButton);
+                cartItems.getChildren().addAll(itemLabel, quantityControl, removeButton);
             }
 
             // Scroll pane for the cart items
@@ -74,11 +101,21 @@ public class MyCartPage extends Application {
                 primaryStage.close();
                 CheckoutPage checkoutPage = new CheckoutPage();
                 checkoutPage.start(new Stage());
-              
             });
 
-            // Bottom layout for total value and checkout button
-            VBox bottomLayout = new VBox(10, totalLabel, checkoutButton);
+            // Clear cart button
+            Button clearButton = new Button("Clear Cart");
+            clearButton.setOnAction(event -> {
+                // Clear the cart
+                cart.clear();
+                // Refresh the cart page
+                primaryStage.close();
+                MyCartPage myCartPage = new MyCartPage();
+                myCartPage.start(new Stage());
+            });
+
+            // Bottom layout for total value, checkout button, and clear cart button
+            VBox bottomLayout = new VBox(10, totalLabel, checkoutButton, clearButton);
             bottomLayout.setAlignment(Pos.CENTER_RIGHT);
 
             // Set components in the center and bottom of the border pane
@@ -93,6 +130,20 @@ public class MyCartPage extends Application {
         } else {
             System.out.println("Error: Logged-in person is not a customer.");
         }
+    }
+
+    private void updateCartDisplay(Stage primaryStage, BorderPane root) {
+        primaryStage.close();
+        MyCartPage myCartPage = new MyCartPage();
+        myCartPage.start(new Stage());
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     // Calculate the total value of items in the cart

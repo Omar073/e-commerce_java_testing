@@ -2,6 +2,7 @@ package Classes;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Customer extends Person{
@@ -88,19 +89,59 @@ public class Customer extends Person{
 		return "Product added to cart.";
 	}
 	
-	public void removeFromCart(CartItem p) {
-		for (int i = 0; i < cart.size(); i++) {
-			if (cart.get(i).getProduct().getProductID() == p.getProduct().getProductID()) {
-				cart.remove(i);
-				break;
-			}
+	public boolean removeFromCart(CartItem itemToRemove) {
+        Iterator<CartItem> iterator = cart.iterator();
+        while (iterator.hasNext()) {
+            CartItem item = iterator.next();
+            if (item.getProduct().getProductID() == itemToRemove.getProduct().getProductID()) {
+                // Increment product quantity by the quantity in the cart
+                itemToRemove.getProduct().setQuantity(itemToRemove.getProduct().getQuantity() + item.getQuantity());
+                // Update cart subtotal
+                cartSubtotal -= item.getProduct().getPrice() * item.getQuantity();
+                iterator.remove();
+                return true; // Successfully removed the item
+            }
+        }
+        return false; // Item not found in the cart
+    }
+
+	public String increaseQuantity(CartItem cartItem) {
+		Product product = cartItem.getProduct();
+		int currentQuantity = cartItem.getQuantity();
+		int maxQuantity = product.getQuantity(); 
+	
+		if (maxQuantity >= 1) {
+			cartItem.setQuantity(currentQuantity + 1);
+			product.setQuantity(maxQuantity - 1);
+			return "Quantity increased.";
+		} else {
+
+			return "Cannot increase quantity. Product stock limit reached.";
 		}
-		cartSubtotal -= p.getProduct().getPrice(); 
 	}
+	
+	public String decreaseQuantity(CartItem cartItem) {
+		int currentQuantity = cartItem.getQuantity();
+	
+		if (currentQuantity > 1) {
+			cartItem.setQuantity(currentQuantity - 1);
+			return "Quantity decreased.";
+		} else {
+			return "Cannot decrease quantity further.";
+		}
+	}
+	
 
 	public void emptyCart() {
-		cart.clear();
+		for (CartItem item : cart) {
+			Product product = item.getProduct();
+			product.setQuantity(product.getQuantity() + item.getQuantity());
+		}
+		cart.clear(); 
+		cartSubtotal = 0; 
 	}
+	
+	
 
 	public boolean placeOrder(){
 		String orderIdString = Integer.toString(this.getId()) + "_" + Integer.toString(pastOrders.size() + 1);
