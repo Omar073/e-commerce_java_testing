@@ -16,6 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.scene.layout.HBox;
+
 
 import java.util.List;
 
@@ -64,20 +66,26 @@ public class CustomerOrdersPage extends Application {
                 root.getChildren().add(noOrdersLabel);
             }
 
-            Button logoutButton = new Button("Return");
-            logoutButton.setLayoutX(307.0);
-            logoutButton.setLayoutY(411.0);
-            logoutButton.setPrefSize(100, 40);
-            logoutButton.setFont(new Font(20));
-            logoutButton.setOnAction(event -> {
+            Button returnButton = new Button("Return");
+            returnButton.setLayoutX(307.0);
+            returnButton.setLayoutY(411.0);
+            returnButton.setPrefSize(100, 40);
+            returnButton.setFont(new Font(20));
+            returnButton.setOnAction(event -> {
                 primaryStage.close();
                 ProductsPage productsPage = new ProductsPage();
                 productsPage.start(new Stage());
                 
+
             });
 
-            root.getChildren().add(logoutButton);
+            HBox hbBtn = new HBox(10);
+            hbBtn.setAlignment(Pos.TOP_LEFT);
+            hbBtn.setPadding(new Insets(20));
+            hbBtn.getChildren().addAll(returnButton);
 
+
+            root.getChildren().add(hbBtn);
             Scene scene = new Scene(root, 800, 600);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Customer Orders");
