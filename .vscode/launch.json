@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MyCartPage",
+            "request": "launch",
+            "mainClass": "GUI.MyCartPage",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
             "name": "ProductsPage",
             "request": "launch",
             "mainClass": "GUI.ProductsPage",

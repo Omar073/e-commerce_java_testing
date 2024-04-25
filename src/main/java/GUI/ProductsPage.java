@@ -75,7 +75,19 @@ public class ProductsPage extends Application {
                 loginScreen.start(new Stage()); // Open login screen
             });
 
-            HBox searchBarBox = new HBox(10, welcomeLabel, searchField, cartButton);
+
+            
+            Button myOrders = new Button("My Orders");
+            myOrders.setFont(Font.font(14));
+            myOrders.setPrefWidth(80);
+            myOrders.setOnAction(event -> {
+                primaryStage.close(); // Close current window
+                CustomerOrdersPage orders = new CustomerOrdersPage();
+                orders.start(new Stage()); // Open login screen
+            });
+
+
+            HBox searchBarBox = new HBox(10, welcomeLabel, searchField, cartButton,myOrders);
             searchBarBox.setAlignment(Pos.CENTER_LEFT);
             root.setTop(searchBarBox);
 
