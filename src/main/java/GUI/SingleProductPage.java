@@ -1,11 +1,16 @@
 package GUI;
+import Classes.Customer;
+import Classes.Person;
 import Classes.Product;
+import Classes.Shop;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,6 +27,7 @@ import javafx.stage.Stage;
 public class SingleProductPage extends Application {
     private Product product;
     private BorderPane root;
+    private Customer customer;
 
     public SingleProductPage(Product product) {
         this.product = product;
@@ -34,6 +40,11 @@ public class SingleProductPage extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        Person loggedInPerson = Shop.getLoggedInPerson();
+
+        if (loggedInPerson instanceof Customer) {
+            customer = (Customer) loggedInPerson;
+
         root = new BorderPane();
         root.setPadding(new Insets(10));
 
@@ -53,12 +64,17 @@ public class SingleProductPage extends Application {
         Text productPrice = new Text("$" + String.format("%.2f", product.getPrice()));
         productPrice.setFont(Font.font("Arial", 18));
 
+        // Quantity selection
+        Spinner<Integer> quantitySpinner = new Spinner<>();
+        quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1));
+
         // Button to add to cart
         Button addToCartButton = new Button("Add to Cart");
         addToCartButton.setFont(Font.font("Arial", 16));
         addToCartButton.setPrefWidth(150);
         addToCartButton.setOnAction(event -> {
-            // Add logic to add the product to the cart
+            int quantity = quantitySpinner.getValue();
+            customer.addToCart(product, quantity);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
@@ -71,16 +87,20 @@ public class SingleProductPage extends Application {
         backButton.setFont(Font.font("Arial", 16));
         backButton.setPrefWidth(150);
         backButton.setOnAction(event -> {
-        // Create and show the products page with the current customer
-        // ProductsPage productPage = new ProductsPage(product.getCustomer());
-        // productPage.start(new Stage());
+            // Create and show the products page with the current customer
+            ProductsPage productPage = new ProductsPage();
+            productPage.start(new Stage());
 
-        // Close the current window
-        primaryStage.close();
-});
+            // Close the current window
+            primaryStage.close();
+        });
+
+        // Layout for quantity selection and add to cart button
+        HBox quantityBox = new HBox(20, quantitySpinner, addToCartButton);
+        quantityBox.setAlignment(Pos.CENTER);
 
         // Layout for buttons
-        HBox buttonBox = new HBox(20, addToCartButton, backButton);
+        HBox buttonBox = new HBox(20, quantityBox, backButton);
         buttonBox.setAlignment(Pos.CENTER);
 
         // Layout for product details
@@ -95,6 +115,10 @@ public class SingleProductPage extends Application {
         Scene scene = new Scene(root, 800, 600); // Set preferred window size
         primaryStage.setScene(scene);
         primaryStage.setTitle("Product Details");
+    }else{
+        System.out.println("Error: Logged-in person is not a customer.");
+    
+    }
     }
 
     public BorderPane getRootNode() {
@@ -104,4 +128,5 @@ public class SingleProductPage extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
