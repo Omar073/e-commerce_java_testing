@@ -1,5 +1,10 @@
 package GUI;
 
+import Classes.CartItem;
+import Classes.Customer;
+import Classes.Person;
+import Classes.Product;
+import Classes.Shop;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,64 +18,92 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class MyCartPage extends Application {
+    private Customer customer;
 
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(20));
 
-        // Create a VBox to hold the products in the cart
-        VBox cartItems = new VBox();
-        cartItems.setSpacing(10);
-        cartItems.setPadding(new Insets(10));
+        Person loggedInPerson = Shop.getLoggedInPerson();
 
-        // Add sample products to the cart (replace with actual products from user's cart)
-        addSampleProductsToCart(cartItems);
+        if (loggedInPerson instanceof Customer) {
+            // If the logged-in person is a customer, assign it to the customer variable
+            customer = (Customer) loggedInPerson;
 
-        // Scroll pane for the cart items
-        ScrollPane scrollPane = new ScrollPane(cartItems);
-        scrollPane.setFitToWidth(true);
-        scrollPane.setPrefHeight(300);
+            // Back button
+            Button backButton = new Button("Back to Products");
+            backButton.setOnAction(event -> {
+                primaryStage.close();
+                ProductsPage productsPage = new ProductsPage();
+                productsPage.start(new Stage());
+            });
 
-        // Total order value label
-        Label totalLabel = new Label("Total: $100.00"); // Sample total value
-        totalLabel.setFont(Font.font(18));
+            VBox cartItems = new VBox();
+            cartItems.setSpacing(10);
+            cartItems.setPadding(new Insets(10));
 
-        // Checkout button
-        Button checkoutButton = new Button("Checkout");
-        checkoutButton.setFont(Font.font(16));
-        checkoutButton.setPrefWidth(150);
-        checkoutButton.setOnAction(event -> {
-            // Add logic to process the checkout
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Checkout");
-            alert.setHeaderText(null);
-            alert.setContentText("Checkout completed!");
-            alert.showAndWait();
-        });
+            // Get the cart items from the customer
+            List<CartItem> cart = customer.getCart();
 
-        // Bottom layout for total value and checkout button
-        VBox bottomLayout = new VBox(10, totalLabel, checkoutButton);
-        bottomLayout.setAlignment(Pos.CENTER_RIGHT);
+            // Iterate through the cart items and display them
+            for (CartItem item : cart) {
+                Product product = item.getProduct();
+                int quantity = item.getQuantity();
+                Label itemLabel = new Label(product.getProductName() + " - Quantity: " + quantity);
+                cartItems.getChildren().add(itemLabel);
+            }
 
-        // Set components in the center and bottom of the border pane
-        root.setCenter(scrollPane);
-        root.setBottom(bottomLayout);
+            // Scroll pane for the cart items
+            ScrollPane scrollPane = new ScrollPane(cartItems);
+            scrollPane.setFitToWidth(true);
+            scrollPane.setPrefHeight(300);
 
-        Scene scene = new Scene(root, 600, 400);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("My Cart");
-        primaryStage.show();
+            // Total order value label
+            Label totalLabel = new Label("Total: $" + calculateTotal(cart)); // Calculate total value
+            totalLabel.setFont(Font.font(18));
+
+            // Checkout button
+            Button checkoutButton = new Button("Checkout");
+            checkoutButton.setFont(Font.font(16));
+            checkoutButton.setPrefWidth(150);
+            checkoutButton.setOnAction(event -> {
+                // Add logic to process the checkout
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Checkout");
+                alert.setHeaderText(null);
+                alert.setContentText("Checkout completed!");
+                alert.showAndWait();
+            });
+
+            // Bottom layout for total value and checkout button
+            VBox bottomLayout = new VBox(10, totalLabel, checkoutButton);
+            bottomLayout.setAlignment(Pos.CENTER_RIGHT);
+
+            // Set components in the center and bottom of the border pane
+            root.setTop(backButton);
+            root.setCenter(scrollPane);
+            root.setBottom(bottomLayout);
+
+            Scene scene = new Scene(root, 600, 400);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("My Cart");
+            primaryStage.show();
+        } else {
+            System.out.println("Error: Logged-in person is not a customer.");
+        }
     }
 
-    private void addSampleProductsToCart(VBox cartItems) {
-        // Sample products in the cart (replace with actual products from user's cart)
-        for (int i = 1; i <= 10; i++) {
-            Label productLabel = new Label("Product " + i); // Sample product name
-            productLabel.setFont(Font.font(16));
-            cartItems.getChildren().add(productLabel);
+    // Calculate the total value of items in the cart
+    private double calculateTotal(List<CartItem> cart) {
+        double total = 0;
+        for (CartItem item : cart) {
+            total += item.getProduct().getPrice() * item.getQuantity();
         }
+        return total;
     }
 
     public static void main(String[] args) {
