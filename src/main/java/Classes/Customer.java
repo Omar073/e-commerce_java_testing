@@ -41,13 +41,24 @@ public class Customer extends Person{
 	public void setPastOrders(List<Order> pastOrders) {
 		this.pastOrders = pastOrders;
 	}
-	
 	public void addToCart(Product p, int quantity) {
 		if (cart == null) {
-	        cart = new ArrayList<>(); // Initialize the cart list if it's null
+			cart = new ArrayList<>(); // Initialize the cart list if it's null
 		}
+	
+		// Check if the product already exists in the cart
+		for (CartItem item : cart) {
+			if (item.getProduct().getProductID() == p.getProductID()) {
+				// If the product exists, update the quantity and subtotal
+				item.setQuantity(item.getQuantity() + quantity);
+				cartSubtotal += p.getPrice() * quantity;
+				return; // Exit the method
+			}
+		}
+	
+		// If the product doesn't exist, add it as a new CartItem
 		cart.add(new CartItem(p, quantity));
-	    cartSubtotal += p.getPrice() * quantity;
+		cartSubtotal += p.getPrice() * quantity;
 	}
 	
 	public void removeFromCart(CartItem p) {
