@@ -74,11 +74,12 @@ public class SingleProductPage extends Application {
         addToCartButton.setPrefWidth(150);
         addToCartButton.setOnAction(event -> {
             int quantity = quantitySpinner.getValue();
-            customer.addToCart(product, quantity);
+            String addToCartMessage = customer.addToCart(product, quantity);
+            
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Success");
+            alert.setTitle("Add to Cart");
             alert.setHeaderText(null);
-            alert.setContentText("Product added to cart!");
+            alert.setContentText(addToCartMessage);
             alert.showAndWait();
         });
 

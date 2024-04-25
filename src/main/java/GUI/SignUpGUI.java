@@ -144,17 +144,6 @@ public class SignUpGUI extends Application {
             }
         });
 
-        // Set background image
-        // Image backgroundImage = new Image("image.jpg");
-        // BackgroundImage background = new BackgroundImage(
-        //         backgroundImage,
-        //         BackgroundRepeat.NO_REPEAT,
-        //         BackgroundRepeat.NO_REPEAT,
-        //         BackgroundPosition.CENTER,
-        //         new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)
-        // );
-        // root.setBackground(new Background(background));
-
         root.getChildren().addAll(
             passwordField, idField, titleLabel, createAccountButton, firstNameField, lastNameField,
             genderComboBox, addressField, phoneNumberField, emailField, returnButton

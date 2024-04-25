@@ -41,7 +41,30 @@ public class Customer extends Person{
 	public void setPastOrders(List<Order> pastOrders) {
 		this.pastOrders = pastOrders;
 	}
-	public void addToCart(Product p, int quantity) {
+	public String addToCart(Product p, int quantity) {
+		// Check if quantity is valid
+		if (quantity <= 0) {
+			return "Error: Invalid quantity.";
+		}
+	
+		// Check if the product exists in the products list
+		boolean productExists = false;
+		for (Product product : Shop.products) {
+			if (product.getProductID() == p.getProductID()) {
+				productExists = true;
+				break;
+			}
+		}
+	
+		if (!productExists) {
+			return "Error: Product not found.";
+		}
+	
+		// Check if the desired quantity is available
+		if (p.getQuantity() < quantity) {
+			return "Error: Insufficient quantity.";
+		}
+	
 		if (cart == null) {
 			cart = new ArrayList<>(); // Initialize the cart list if it's null
 		}
@@ -49,16 +72,20 @@ public class Customer extends Person{
 		// Check if the product already exists in the cart
 		for (CartItem item : cart) {
 			if (item.getProduct().getProductID() == p.getProductID()) {
-				// If the product exists, update the quantity and subtotal
 				item.setQuantity(item.getQuantity() + quantity);
 				cartSubtotal += p.getPrice() * quantity;
-				return; // Exit the method
+	
+				p.setQuantity(p.getQuantity() - quantity);
+				return "Product added to cart.";
 			}
 		}
 	
-		// If the product doesn't exist, add it as a new CartItem
 		cart.add(new CartItem(p, quantity));
 		cartSubtotal += p.getPrice() * quantity;
+	
+		p.setQuantity(p.getQuantity() - quantity);
+	
+		return "Product added to cart.";
 	}
 	
 	public void removeFromCart(CartItem p) {
@@ -75,20 +102,30 @@ public class Customer extends Person{
 		cart.clear();
 	}
 
-	public void placeOrder(){
-		// set the new order id by concatenating the customer id and the number of orders + 1
-		int orderId = Integer.parseInt(Integer.toString(this.getId()) + "_" + Integer.toString(pastOrders.size() + 1));
-		LocalDateTime orderTimestamp = LocalDateTime.now();
-		Order order = new Order(orderId, orderTimestamp, this.getAddress());
+	public boolean placeOrder(){
+		String orderIdString = Integer.toString(this.getId()) + "_" + Integer.toString(pastOrders.size() + 1);
+		
+		try {
+			// Attempt to create the order
+			LocalDateTime orderTimestamp = LocalDateTime.now();
+			Order order = new Order(orderIdString, orderTimestamp, this.getAddress());
 	
-		// Iterate through the products in the cart and create CartItem objects
-		for (CartItem item : cart) { // Assuming each variation is ordered once
-			order.addOrderItem(item); // Add the order item to the order
+			// Iterate through the products in the cart and create CartItem objects
+			for (CartItem item : cart) { // Assuming each variation is ordered once
+				order.addOrderItem(item); // Add the order item to the order
+			}
+	
+			pastOrders.add(order); // Add the order to the list of past orders
+			cart.clear(); // Clear the cart
+	
+			return true; // Return true indicating successful order creation
+		} catch (NumberFormatException e) {
+			// If there's a NumberFormatException, return false indicating failure
+			System.out.println("Error: Unable to parse order ID. Invalid format.");
+			return false;
 		}
-	
-		pastOrders.add(order); // Add the order to the list of past orders
-		cart.clear(); // Clear the cart
 	}
+	
 	
 
 	

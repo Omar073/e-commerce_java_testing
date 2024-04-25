@@ -18,7 +18,7 @@ class OrderTest {
     void setUp() {
         // Initialize a new order instance before each test
         orderItems = new ArrayList<>();
-        order = new Order(1, LocalDateTime.now(), "123 Main St");
+        order = new Order("1", LocalDateTime.now(), "123 Main St");
         order.setOrderItems(orderItems);
     }
 

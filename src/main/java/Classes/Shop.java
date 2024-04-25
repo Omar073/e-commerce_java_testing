@@ -26,7 +26,7 @@ public class Shop {
                 persons.add(new Admin(4, "admin4@example.com", "admin101112", "Admin", "Brown", "101112 Admin St"));
 
                 // Adding Customers
-                persons.add(new Customer(1, "customer1@example.com", "customer123", "John", "Doe", "123 Main St",
+                persons.add(new Customer(1, "customer1@example.com", "1", "John", "Doe", "123 Main St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
                 persons.add(new Customer(2, "customer2@example.com", "222", "Alice", "Smith", "456 Elm St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
