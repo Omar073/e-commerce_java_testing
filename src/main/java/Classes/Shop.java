@@ -26,17 +26,18 @@ public class Shop {
                 persons.add(new Admin(4, "admin4@example.com", "admin101112", "Admin", "Brown", "101112 Admin St"));
 
                 // Adding Customers
-                persons.add(new Customer(1, "customer1@example.com", "1", "John", "Doe", "123 Main St",
+
+                persons.add(new Customer(5, "customer1@example.com", "customer123", "John", "Doe", "123 Main St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
-                persons.add(new Customer(2, "customer2@example.com", "222", "Alice", "Smith", "456 Elm St",
+                persons.add(new Customer(6, "customer2@example.com", "66", "Alice", "Smith", "456 Elm St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
-                persons.add(new Customer(3, "customer3@example.com", "customer789", "Bob", "Johnson", "789 Oak St",
+                persons.add(new Customer(7, "customer3@example.com", "customer789", "Bob", "Johnson", "789 Oak St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
-                persons.add(new Customer(4, "customer4@example.com", "customer101", "Emma", "Wilson", "101 Main St",
+                persons.add(new Customer(8, "customer4@example.com", "customer101", "Emma", "Wilson", "101 Main St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
-                persons.add(new Customer(5, "customer5@example.com", "customer112", "David", "Jones", "112 Elm St",
+                persons.add(new Customer(9, "customer5@example.com", "customer112", "David", "Jones", "112 Elm St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
-                persons.add(new Customer(6, "customer6@example.com", "customer1314", "Olivia", "Martinez",
+                persons.add(new Customer(10, "customer6@example.com", "customer1314", "Olivia", "Martinez",
                                 "1314 Oak St",
                                 new ArrayList<>(), 0, new ArrayList<>()));
 

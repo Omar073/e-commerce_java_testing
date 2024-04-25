@@ -44,9 +44,9 @@ public class AdminGUI extends Application{
         addProductButton.setLayoutX(72.0);
         addProductButton.setLayoutY(91.0);
         addProductButton.setOnAction(event -> {
-            // AddProductGUI addProductGUI = new AddProductGUI();
-            // Stage addProductStage = new Stage();
-            // addProductGUI.start(addProductStage);
+            AddProductGUI addProductGUI = new AddProductGUI();
+            Stage addProductStage = new Stage();
+            addProductGUI.start(addProductStage);
             primaryStage.close();
         });
 
@@ -54,9 +54,9 @@ public class AdminGUI extends Application{
         removeProductButton.setLayoutX(286.0);
         removeProductButton.setLayoutY(91.0);
         removeProductButton.setOnAction(event -> {
-            // SearchProductsGUI searchproductsGUI = new SearchProductsGUI("admin", "delete");
-            // Stage searchProductsStage = new Stage();
-            // SearchProductsGUI.start(searchProductsStage);
+            RemoveProductsGUI removeproductsGUI = new RemoveProductsGUI();
+            Stage removeProductsStage = new Stage();
+            removeproductsGUI.start(removeProductsStage);
             primaryStage.close();
         });
 

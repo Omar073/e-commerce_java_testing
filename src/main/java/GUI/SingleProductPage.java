@@ -130,5 +130,4 @@ public class SingleProductPage extends Application {
         launch(args);
     }
 
-   
 }
