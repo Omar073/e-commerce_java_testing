@@ -130,6 +130,11 @@ public class CheckoutPage extends Application {
                     successAlert.setHeaderText(null);
                     successAlert.setContentText("Payment processed successfully!\nOrder created.");
                     successAlert.showAndWait();
+
+                    // Return to products Page
+                    primaryStage.close();
+                    ProductsPage productsPage = new ProductsPage();
+                    productsPage.start(new Stage());
                 } else {
                     // Show error message if order could not be placed
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -139,8 +144,6 @@ public class CheckoutPage extends Application {
                     errorAlert.showAndWait();
                 }
     
-                // Close the current stage and open the products page
-                primaryStage.close();
     
             });
     

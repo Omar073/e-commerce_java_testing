@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -51,11 +52,15 @@ public class MyCartPage extends Application {
             List<CartItem> cart = customer.getCart();
 
             // Iterate through the cart items and display them
-            // Iterate through the cart items and display them
             for (CartItem item : cart) {
                 Product product = item.getProduct();
                 int quantity = item.getQuantity();
+            
                 Label itemLabel = new Label(product.getProductName() + " - Quantity: " + quantity);
+                ImageView productImageView = new ImageView(product.getImageUrl());
+                productImageView.setFitHeight(100); // Adjust height as needed
+                productImageView.setFitWidth(100); // Adjust width as needed
+            
                 Button removeButton = new Button("Remove");
                 removeButton.setOnAction(event -> {
                     // Remove the product from the cart
@@ -65,24 +70,33 @@ public class MyCartPage extends Application {
                     MyCartPage myCartPage = new MyCartPage();
                     myCartPage.start(new Stage());
                 });
-
+            
                 Button increaseButton = new Button("+");
                 increaseButton.setOnAction(event -> {
                     String result = customer.increaseQuantity(item);
                     updateCartDisplay(primaryStage, root);
                     showAlert(result);
                 });
-
+            
                 Button decreaseButton = new Button("-");
                 decreaseButton.setOnAction(event -> {
                     String result = customer.decreaseQuantity(item);
                     updateCartDisplay(primaryStage, root);
                     showAlert(result);
                 });
-
+            
                 HBox quantityControl = new HBox(5, increaseButton, decreaseButton);
-                cartItems.getChildren().addAll(itemLabel, quantityControl, removeButton);
+            
+                // VBox to contain item details
+                VBox itemDetails = new VBox(5);
+                itemDetails.getChildren().addAll(itemLabel, quantityControl);
+            
+                // Horizontal box to contain item image and details
+                HBox itemBox = new HBox(10);
+                itemBox.getChildren().addAll(productImageView, itemDetails, removeButton);
+                cartItems.getChildren().add(itemBox);
             }
+            
 
             // Scroll pane for the cart items
             ScrollPane scrollPane = new ScrollPane(cartItems);
