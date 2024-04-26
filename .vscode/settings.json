@@ -11,5 +11,6 @@
         "m:\\Apps\\javafx-sdk-20.0.1\\lib\\javafx-swt.jar",
         "m:\\Apps\\javafx-sdk-20.0.1\\lib"
     ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.debug.settings.onBuildFailureProceed": true
 }

@@ -109,7 +109,7 @@ public class AddProductGUI extends Application {
                         String imageUrl = "Images/" + selectedFilename; // Assuming the Images folder is located in the project root
         
                         // Create a new Product object with the entered values
-                        Product newProduct = new Product(null, productName, description, category, color, quantity, imageUrl, price);
+                        Product newProduct = new Product( productName, description, category, color, quantity, imageUrl, price);
                         Shop.products.add(newProduct);
         
                         // Show an alert indicating that the new product has been added successfully

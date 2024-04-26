@@ -24,7 +24,7 @@ class OrderTest {
 
     @Test
     void testAddOrderItem() {
-        Product product = new Product("113", "Product 2", "Description 2", "Category 2", "Color 2", 10,
+        Product product = new Product( "Product 2", "Description 2", "Category 2", "Color 2", 10,
                 "Images/shoe3.png", 20.0);
         CartItem orderItem = new CartItem(product, 2);
 
@@ -38,7 +38,7 @@ class OrderTest {
 
     @Test
     void testRemoveOrderItem() {
-        Product product = new Product("223", "Product 2", "Description 2", "Category 2", "Color 2", 10,
+        Product product = new Product( "Product 2", "Description 2", "Category 2", "Color 2", 10,
                 "Images/shoe2.jpeg", 20.0);
         CartItem orderItem = new CartItem(product, 2);
         order.addOrderItem(orderItem);

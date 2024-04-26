@@ -12,7 +12,7 @@ class CartItemTest {
     @BeforeEach
     void setUp() {
         // Initialize a new order item instance before each test
-        Product product = new Product("311", "Product 2", "Description 2", "Category 2", "Color 2", 10,
+        Product product = new Product( "Product 2", "Description 2", "Category 2", "Color 2", 10,
                 "Images/shoe1.jpeg", 20.0);
         cartItem = new CartItem(product, 2);
     }

@@ -42,16 +42,16 @@ public class Shop {
                                 new ArrayList<>(), 0, new ArrayList<>()));
 
                 // Adding Products
-                products.add(new Product("1", "Product 1", "Description 1", "Category 1", "Color 1", 10, "Images/download.jpg", 10.0));
-                products.add(new Product("2", "Product 2", "Description 2", "Category 2", "Color 2", 10, "Images/hoodie1.jpeg", 20.0));
-                products.add(new Product("3", "Product 3", "Description 3", "Category 3", "Color 3", 10, "Images/hoodie2.jpeg", 30.0));
-                products.add(new Product("4", "Product 4", "Description 4", "Category 4", "Color 4", 10, "Images/shoe1.jpeg", 40.0));
-                products.add(new Product("5", "Product 5", "Description 5", "Category 5", "Color 5", 10, "Images/shoe2.jpeg", 50.0));
-                products.add(new Product("6", "Product 6", "Description 6", "Category 6", "Color 6", 10, "Images/shoe1.jpg", 60.0));
-                products.add(new Product("7", "Product 7", "Description 7", "Category 7", "Color 7", 10, "Images/shoe3.jpeg", 70.0));
-                products.add(new Product("8", "Product 8", "Description 8", "Category 8", "Color 8", 10, "Images/shoe3.png", 80.0));
-                products.add(new Product("9", "Product 9", "Description 9", "Category 9", "Color 9", 10, "Images/thumbsup.jpg", 90.0));
-                products.add(new Product("10", "Product 10", "Description 10", "Category 10", "Color 10", 10, "Images/download.jpg", 100.0));
+                products.add(new Product( "Product 1", "Description 1", "Category 1", "Color 1", 10, "Images/download.jpg", 10.0));
+                products.add(new Product( "Product 2", "Description 2", "Category 2", "Color 2", 10, "Images/hoodie1.jpeg", 20.0));
+                products.add(new Product( "Product 3", "Description 3", "Category 3", "Color 3", 10, "Images/hoodie2.jpeg", 30.0));
+                products.add(new Product( "Product 4", "Description 4", "Category 4", "Color 4", 10, "Images/shoe1.jpeg", 40.0));
+                products.add(new Product( "Product 5", "Description 5", "Category 5", "Color 5", 10, "Images/shoe2.jpeg", 50.0));
+                products.add(new Product( "Product 6", "Description 6", "Category 6", "Color 6", 10, "Images/shoe1.jpg", 60.0));
+                products.add(new Product( "Product 7", "Description 7", "Category 7", "Color 7", 10, "Images/shoe3.jpeg", 70.0));
+                products.add(new Product( "Product 8", "Description 8", "Category 8", "Color 8", 10, "Images/shoe3.png", 80.0));
+                products.add(new Product( "Product 9", "Description 9", "Category 9", "Color 9", 10, "Images/thumbsup.jpg", 90.0));
+                products.add(new Product( "Product 10", "Description 10", "Category 10", "Color 10", 10, "Images/download.jpg", 100.0));
 
         }
 
