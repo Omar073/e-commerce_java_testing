@@ -1,0 +1,61 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MyCartPage",
+            "request": "launch",
+            "mainClass": "GUI.MyCartPage",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "ProductsPage",
+            "request": "launch",
+            "mainClass": "GUI.ProductsPage",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "ProductPage",
+            "request": "launch",
+            "mainClass": "GUI.ProductPage",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "LoginGUI",
+            "request": "launch",
+            "mainClass": "GUI.LoginGUI",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "main",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "Run Application",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "com.e_commerce_java_testing"
+        },
+        {
+            "type": "java",
+            "name": "Run Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Run with JavaFX",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "VS code java1_a7611f36",
+            "vmArgs": "--module-path \"M:\\Apps\\javafx-sdk-20.0.1\\lib\""
+        }
+    ]
+}
