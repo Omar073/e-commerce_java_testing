@@ -56,6 +56,10 @@ public class Order {
         return shippingAddress;
     }
 
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
     // Method to add an order item to the order
     public void addOrderItem(CartItem p) {
         // CartItem orderItem = new CartItem(p, quantity);
@@ -70,7 +74,7 @@ public class Order {
     }
 
     // Method to recalculate the order subtotal based on order items
-    private void recalculateOrderSubtotal() {
+    void recalculateOrderSubtotal() {
         double subtotal = 0.0;
         for (CartItem item : orderItems) {
             subtotal += item.getProduct().getPrice() * item.getQuantity();
