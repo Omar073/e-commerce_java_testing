@@ -3,6 +3,8 @@ package GUI;
 import java.util.ArrayList;
 
 import Classes.Customer;
+import Classes.Person;
+import Classes.Shop;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
@@ -35,15 +37,15 @@ public class SignUpGUI extends Application {
     public void start(Stage primaryStage) {
         Pane root = new Pane();
 
-        PasswordField passwordField = new PasswordField();
-        passwordField.setLayoutX(450.0);
-        passwordField.setLayoutY(111.0);
-        passwordField.setPromptText("Password");
-
         TextField idField = new TextField();
         idField.setLayoutX(450.0);
         idField.setLayoutY(75.0);
         idField.setPromptText("ID");
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setLayoutX(450.0);
+        passwordField.setLayoutY(111.0);
+        passwordField.setPromptText("Password");
 
         Label titleLabel = new Label("SignUp Page");
         titleLabel.setLayoutX(215.0);
@@ -83,30 +85,66 @@ public class SignUpGUI extends Application {
         createAccountButton.setPrefHeight(45.0);
         createAccountButton.setPrefWidth(114.0);
         createAccountButton.setOnAction(event -> {
-            String firstName = firstNameField.getText();
-            String lastName = lastNameField.getText();
-            String address = addressField.getText();
-            String email = emailField.getText();
-            int userID = Integer.parseInt(idField.getText());
+            String firstName = firstNameField.getText().trim();
+            String lastName = lastNameField.getText().trim();
+            String address = addressField.getText().trim();
+            String email = emailField.getText().trim();
+            String userIDText = idField.getText().trim();
             String password = passwordField.getText();
 
-            // Create a new instance of Reader
-            Customer reader = new Customer(userID, email, password, firstName, lastName, address,
+            // Check if any field is empty
+            if (firstName.isEmpty() || lastName.isEmpty() || address.isEmpty() || email.isEmpty()
+                    || userIDText.isEmpty() || password.isEmpty()) {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Missing Information");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill in all the fields.");
+                alert.showAndWait();
+                return; // Exit the method
+            }
+
+            // Check if userID is a valid integer
+            int userID;
+            try {
+                userID = Integer.parseInt(userIDText);
+            } catch (NumberFormatException e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Invalid User ID");
+                alert.setHeaderText(null);
+                alert.setContentText("User ID must be a valid integer.");
+                alert.showAndWait();
+                return; // Exit the method
+            }
+
+            // Check if the entered ID is already taken
+            for (Person existingCustomer : Shop.persons) {
+                if (existingCustomer.getId() == userID) {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("ID Already Taken");
+                    alert.setHeaderText(null);
+                    alert.setContentText("The entered ID is already taken. Please choose a different one.");
+                    alert.showAndWait();
+                    return; // Exit the method
+                }
+            }
+
+            // Create a new instance of Customer
+            Customer customer = new Customer(userID, email, password, firstName, lastName, address,
                     new ArrayList<>(), 0, new ArrayList<>());
 
-            // Add the reader to Shop.persons
-            // Shop.persons.add(reader); //TODO: for some reason the file isn't reading
-            // shop.persons
+            // Add the customer to your data structure or perform any other necessary
+            // actions
+            Shop.persons.add(customer);
+            Shop.setLoggedInPerson(customer);
 
+            // Show success message
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Login Successful");
+            alert.setTitle("Account Created");
             alert.setHeaderText(null);
-            alert.setContentText("Welcome to the Library Management System " + firstName + " !");
+            alert.setContentText("Your account has been created successfully.");
             alert.showAndWait();
 
-            Stage readerStage = new Stage();
-            // ReaderGUI readergui = new ReaderGUI(reader);
-            // readergui.start(readerStage);
+            // Close the current stage or navigate to another page
             primaryStage.close();
         });
 
