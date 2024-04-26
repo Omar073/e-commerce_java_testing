@@ -66,24 +66,10 @@ public class SignUpGUI extends Application {
         lastNameField.setLayoutY(183.0);
         lastNameField.setPromptText("Last Name");
 
-        ComboBox<String> genderComboBox = new ComboBox<>();
-        genderComboBox.setLayoutX(449.0);
-        genderComboBox.setLayoutY(255.0);
-        genderComboBox.setPrefWidth(150.0);
-        genderComboBox.setPromptText("Gender");
-        genderComboBox.setVisibleRowCount(2);
-        genderComboBox.setItems(FXCollections.observableArrayList("Male", "Female"));
-
-
         TextField addressField = new TextField();
         addressField.setLayoutX(450.0);
         addressField.setLayoutY(298.0);
         addressField.setPromptText("Address");
-
-        TextField phoneNumberField = new TextField();
-        phoneNumberField.setLayoutX(450.0);
-        phoneNumberField.setLayoutY(333.0);
-        phoneNumberField.setPromptText("Phone Number");
 
         TextField emailField = new TextField();
         emailField.setLayoutX(450.0);
@@ -99,19 +85,18 @@ public class SignUpGUI extends Application {
         createAccountButton.setOnAction(event -> {
             String firstName = firstNameField.getText();
             String lastName = lastNameField.getText();
-            String gender = genderComboBox.getValue();
             String address = addressField.getText();
-            int phoneNumber = Integer.parseInt(phoneNumberField.getText());
             String email = emailField.getText();
             int userID = Integer.parseInt(idField.getText());
             String password = passwordField.getText();
 
             // Create a new instance of Reader
             Customer reader = new Customer(userID, email, password, firstName, lastName, address,
-            new ArrayList<>(), 0, new ArrayList<>());
+                    new ArrayList<>(), 0, new ArrayList<>());
 
             // Add the reader to Shop.persons
-            // Shop.persons.add(reader);  //TODO: for some reason the file isn't reading shop.persons
+            // Shop.persons.add(reader); //TODO: for some reason the file isn't reading
+            // shop.persons
 
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Login Successful");
@@ -130,13 +115,12 @@ public class SignUpGUI extends Application {
         returnButton.setLayoutY(335);
         returnButton.setPrefSize(83, 45);
         returnButton.setOnAction(event -> {
-            if(action.equals("create")){
+            if (action.equals("create")) {
                 Stage adminStage = new Stage();
                 AdminGUI adminGUI = new AdminGUI();
                 adminGUI.start(adminStage);
                 primaryStage.close();
-            }
-            else if(action.equals("signup")){
+            } else if (action.equals("signup")) {
                 Stage mainpage = new Stage();
                 HomePage myhelloapp = new HomePage();
                 myhelloapp.start(mainpage);
@@ -145,9 +129,8 @@ public class SignUpGUI extends Application {
         });
 
         root.getChildren().addAll(
-            passwordField, idField, titleLabel, createAccountButton, firstNameField, lastNameField,
-            genderComboBox, addressField, phoneNumberField, emailField, returnButton
-        );
+                passwordField, idField, titleLabel, createAccountButton, firstNameField, lastNameField,
+                addressField, emailField, returnButton);
         Scene scene = new Scene(root, 687, 474);
         primaryStage.setScene(scene);
         primaryStage.setTitle("SignUp Page");
