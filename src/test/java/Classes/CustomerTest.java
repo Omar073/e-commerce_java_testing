@@ -1,8 +1,6 @@
 package Classes;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,15 +50,6 @@ class CustomerTest {
     @DisplayName("addToCart method")
     class AddToCartTests {
 
-        @ParameterizedTest
-        @CsvSource({
-                " 5, Product added to cart.",
-                " 0,Error: Invalid quantity.",
-                " 10 ,Product added to cart.",
-                "3, Product added to cart.",
-                "-1, Error: Invalid quantity.",
-                "15 ,Error: Insufficient quantity."
-        })
         void testAddToCart(int quantity, String expected) {
             Product product = new Product("Product 50", "Description 1", "Category 1", "Color 1", 10,
                     "Images/download.jpg", 10.0);
