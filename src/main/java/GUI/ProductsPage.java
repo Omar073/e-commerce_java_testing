@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -70,24 +71,29 @@ public class ProductsPage extends Application {
             logoutButton.setOnAction(event -> {
                 // Logout functionality
                 Shop.setLoggedInPerson(null);
-                primaryStage.close(); // Close current window
-                LoginGUI loginScreen = new LoginGUI();
-                loginScreen.start(new Stage()); // Open login screen
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Logout");
+                alert.setHeaderText(null);
+                // alert.setContentText("Welcome to the Library Management System!");
+                alert.setContentText("Logged out successfully!");
+                alert.showAndWait();
+                // System.exit(0);
+                HomePage homepage = new HomePage();
+                Stage homePageStage = new Stage();
+                homepage.start(homePageStage);
+                primaryStage.close();
             });
 
-
-            
             Button myOrders = new Button("My Orders");
             myOrders.setFont(Font.font(14));
-            myOrders.setPrefWidth(80);
+            myOrders.setPrefWidth(100);
             myOrders.setOnAction(event -> {
                 primaryStage.close(); // Close current window
                 CustomerOrdersPage orders = new CustomerOrdersPage();
                 orders.start(new Stage()); // Open login screen
             });
 
-
-            HBox searchBarBox = new HBox(10, welcomeLabel, searchField, cartButton,myOrders);
+            HBox searchBarBox = new HBox(13, welcomeLabel, searchField, cartButton, myOrders);
             searchBarBox.setAlignment(Pos.CENTER_LEFT);
             root.setTop(searchBarBox);
 
@@ -140,7 +146,7 @@ public class ProductsPage extends Application {
             primaryStage.setTitle("Product Page");
             primaryStage.show();
         } else {
-            
+
             System.out.println("Error: Logged-in person is not a customer.");
         }
     }

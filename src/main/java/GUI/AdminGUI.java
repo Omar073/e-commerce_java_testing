@@ -13,17 +13,18 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class AdminGUI extends Application{
-    
+public class AdminGUI extends Application {
+
     static private Person person = null;
 
-    //constructor
+    // constructor
     public AdminGUI(Person person) {
         this.person = person;
     }
 
-    //default constructor
-    public AdminGUI() {}
+    // default constructor
+    public AdminGUI() {
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -64,10 +65,11 @@ public class AdminGUI extends Application{
         // updateProductButton.setLayoutX(498.0);
         // updateProductButton.setLayoutY(91.0);
         // updateProductButton.setOnAction(event -> {
-        //     SearchProductsGUI searchproductsGUI = new SearchProductsGUI("admin", "search");
-        //     Stage searchProductsStage = new Stage();
-        //     SearchProductsGUI.start(searchProductsStage);
-        //     primaryStage.close();
+        // SearchProductsGUI searchproductsGUI = new SearchProductsGUI("admin",
+        // "search");
+        // Stage searchProductsStage = new Stage();
+        // SearchProductsGUI.start(searchProductsStage);
+        // primaryStage.close();
         // });
 
         Button addUserButton = new Button("Add new user");
@@ -80,90 +82,83 @@ public class AdminGUI extends Application{
             primaryStage.close();
         });
 
-        Button searchUsersButton = new Button("Search users");
-        searchUsersButton.setLayoutX(504.0);
-        searchUsersButton.setLayoutY(225.0);
-        searchUsersButton.setOnAction(event -> {
-            // SearchUsersGui searchusersGUI = new SearchUsersGui("admin", "search");
-            // Stage searchusersstage = new Stage();
-            // searchusersGUI.start(searchusersstage);
-            primaryStage.close();
-        });
+        // Button searchUsersButton = new Button("Search users");
+        // searchUsersButton.setLayoutX(504.0);
+        // searchUsersButton.setLayoutY(225.0);
+        // searchUsersButton.setOnAction(event -> {
+        // // SearchUsersGui searchusersGUI = new SearchUsersGui("admin", "search");
+        // // Stage searchusersstage = new Stage();
+        // // searchusersGUI.start(searchusersstage);
+        // primaryStage.close();
+        // });
 
-        Button removeUserButton = new Button("Remove a user");
-        removeUserButton.setLayoutX(288.0);
-        removeUserButton.setLayoutY(157.0);
-        removeUserButton.setOnAction(event -> {
-            // SearchUsersGui searchusersGUI = new SearchUsersGui("admin", "delete");
-            // Stage searchusersstage = new Stage();
-            // searchusersGUI.start(searchusersstage);
-            primaryStage.close();
-        });
-        
-        Button blockUserButton = new Button("Block user");
-        blockUserButton.setLayoutX(510.0);
-        blockUserButton.setLayoutY(340.0);
-        blockUserButton.setOnAction(event -> {
-            // SearchUsersGui searchusersGUI = new SearchUsersGui("admin", "block");
-            // Stage searchusersstage = new Stage();
-            // searchusersGUI.start(searchusersstage);
-            primaryStage.close();
-        });
+        // Button removeUserButton = new Button("Remove a user");
+        // removeUserButton.setLayoutX(288.0);
+        // removeUserButton.setLayoutY(157.0);
+        // removeUserButton.setOnAction(event -> {
+        // // SearchUsersGui searchusersGUI = new SearchUsersGui("admin", "delete");
+        // // Stage searchusersstage = new Stage();
+        // // searchusersGUI.start(searchusersstage);
+        // primaryStage.close();
+        // });
 
         // Button updateUserButton = new Button("Update a user");
         // updateUserButton.setLayoutX(500.0);
         // updateUserButton.setLayoutY(157.0);
 
-        Button viewProductsButton = new Button("View all products");
-        viewProductsButton.setLayoutX(73.0);
-        viewProductsButton.setLayoutY(225.0);
-        viewProductsButton.setOnAction(event -> {
-            // DisplayListGUI displayListGUI = new DisplayListGUI(Shop.products, "admin");
-            // Stage displayproductsstage = new Stage();
-            // displayListGUI.start(displayproductsstage);
-            primaryStage.close();
-        });
-        // displayListGUI.launch(args);
+        // Button viewProductsButton = new Button("View all products");
+        // viewProductsButton.setLayoutX(73.0);
+        // viewProductsButton.setLayoutY(225.0);
+        // viewProductsButton.setOnAction(event -> {
+        // // DisplayListGUI displayListGUI = new DisplayListGUI(Shop.products,
+        // "admin");
+        // // Stage displayproductsstage = new Stage();
+        // // displayListGUI.start(displayproductsstage);
+        // primaryStage.close();
+        // });
+        // // displayListGUI.launch(args);
 
-        Button viewUsersButton = new Button("View all users");
-        viewUsersButton.setLayoutX(291.0);
-        viewUsersButton.setLayoutY(225.0);
-        viewUsersButton.setOnAction(event -> {
-            // DisplayListGUI displayListGUI = new DisplayListGUI(Shop.persons, "admin");
-            // Stage displayusersstage = new Stage();
-            // displayListGUI.start(displayusersstage);
-            primaryStage.close();
-        });
+        // Button viewUsersButton = new Button("View all users");
+        // viewUsersButton.setLayoutX(291.0);
+        // viewUsersButton.setLayoutY(225.0);
+        // viewUsersButton.setOnAction(event -> {
+        // // DisplayListGUI displayListGUI = new DisplayListGUI(Shop.persons, "admin");
+        // // Stage displayusersstage = new Stage();
+        // // displayListGUI.start(displayusersstage);
+        // primaryStage.close();
+        // });
 
-
-        Button searchProductsButton = new Button("Search products");
-        searchProductsButton.setLayoutX(75.0);
-        searchProductsButton.setLayoutY(284.0);
-        searchProductsButton.setOnAction(event -> {
-            //  SearchProductsGUI searchproductsGUI = new SearchProductsGUI("admin", "search");
-            //  Stage searchProductsStage = new Stage();
-            //  SearchProductsGUI.start(searchProductsStage);
-            primaryStage.close();
-        });
+        // Button searchProductsButton = new Button("Search products");
+        // searchProductsButton.setLayoutX(75.0);
+        // searchProductsButton.setLayoutY(284.0);
+        // searchProductsButton.setOnAction(event -> {
+        // // SearchProductsGUI searchproductsGUI = new SearchProductsGUI("admin",
+        // "search");
+        // // Stage searchProductsStage = new Stage();
+        // // SearchProductsGUI.start(searchProductsStage);
+        // primaryStage.close();
+        // });
 
         // Button viewCartButton = new Button("View cart");
         // viewCartButton.setLayoutX(302.0);
         // viewCartButton.setLayoutY(284.0);
         // viewCartButton.setOnAction(event -> {
-        //     // DisplayListGUI displayListGUI = new DisplayListGUI(person.getCart(), "admin");
-        //     // Stage displaybooksstage = new Stage();
-        //     // displayListGUI.start(displaybooksstage);
-        //     primaryStage.close();
+        // // DisplayListGUI displayListGUI = new DisplayListGUI(person.getCart(),
+        // "admin");
+        // // Stage displaybooksstage = new Stage();
+        // // displayListGUI.start(displaybooksstage);
+        // primaryStage.close();
         // });
 
         // Button addToCartButton = new Button("Add to cart");
         // addToCartButton.setLayoutX(507.0);
         // addToCartButton.setLayoutY(284.0);
         // addToCartButton.setOnAction(event -> {
-        //     // SearchBooksGUI searchbooksGUI = new SearchBooksGUI("admin", "addtocart", person);
-        //     // Stage searchbooksstage = new Stage();
-        //     // searchbooksGUI.start(searchbooksstage);
-        //     primaryStage.close();
+        // // SearchBooksGUI searchbooksGUI = new SearchBooksGUI("admin", "addtocart",
+        // person);
+        // // Stage searchbooksstage = new Stage();
+        // // searchbooksGUI.start(searchbooksstage);
+        // primaryStage.close();
         // });
 
         // Button removeBookFromCartButton = new Button("Remove book from cart");
@@ -190,17 +185,16 @@ public class AdminGUI extends Application{
         // Set background image
         // Image backgroundImage = new Image("image.jpg");
         // BackgroundImage background = new BackgroundImage(
-        //         backgroundImage,
-        //         BackgroundRepeat.NO_REPEAT,
-        //         BackgroundRepeat.NO_REPEAT,
-        //         BackgroundPosition.CENTER,
-        //         new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)
+        // backgroundImage,
+        // BackgroundRepeat.NO_REPEAT,
+        // BackgroundRepeat.NO_REPEAT,
+        // BackgroundPosition.CENTER,
+        // new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false,
+        // true, true)
         // );
         // root.setBackground(new Background(background));
 
         root.getChildren().addAll(adminLabel, addProductButton, removeProductButton, addUserButton,
-                removeUserButton, viewProductsButton, viewUsersButton, searchUsersButton,
-                searchProductsButton, blockUserButton,
                 logoutButton);
 
         Scene scene = new Scene(root, 687, 474);
