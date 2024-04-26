@@ -7,13 +7,13 @@ public class Product {
     private String productName;
     private String description;
     private String category;
-	private String color;
-    private  int  quantity;
+    private String color;
+    private int quantity;
     private String imageUrl;
-    private double  price;
+    private double price;
 
-    public Product( String productName, String description, String category, 
-    String color,int quantity, String imageUrl, double  price) {
+    public Product(String productName, String description, String category,
+            String color, int quantity, String imageUrl, double price) {
         this.productID = generateProductID();
         this.productName = productName;
         this.description = description;
@@ -24,7 +24,7 @@ public class Product {
         this.price = price;
     }
 
-    //setters and getters
+    // setters and getters
     public String getProductID() {
         return productID;
     }
@@ -88,9 +88,14 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    private String generateProductID() {
+
+    String generateProductID() {
         lastGeneratedId++; // Increment the last generated ID
         return "P" + String.format("%04d", lastGeneratedId); // Format the ID with leading zeros
     }
 
+    // Reset lastGeneratedId before each test
+    public static void resetLastGeneratedId() {
+        lastGeneratedId = 0;
+    }
 }
