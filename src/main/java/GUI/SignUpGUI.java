@@ -142,7 +142,11 @@ public class SignUpGUI extends Application {
             alert.setTitle("Account Created");
             alert.setHeaderText(null);
             alert.setContentText("Your account has been created successfully.");
-            alert.showAndWait();
+            
+            Stage customerStage = new Stage();
+            ProductsPage customerGUI = new ProductsPage();
+            customerGUI.start(customerStage);
+            primaryStage.close();
 
             // Close the current stage or navigate to another page
             primaryStage.close();
