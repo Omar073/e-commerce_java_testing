@@ -113,8 +113,13 @@ public class MyCartPage extends Application {
             checkoutButton.setPrefWidth(150);
             checkoutButton.setOnAction(event -> {
                 primaryStage.close();
+                if (cart.isEmpty()) {
+                    showAlert("Cart is empty. Please add items to the cart before checking out.");
+                    return;
+                }else {
                 CheckoutPage checkoutPage = new CheckoutPage();
                 checkoutPage.start(new Stage());
+                }
             });
 
             // Clear cart button
