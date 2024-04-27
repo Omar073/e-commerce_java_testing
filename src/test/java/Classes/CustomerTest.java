@@ -57,7 +57,6 @@ public class CustomerTest {
 
         @RepeatedTest(5)
         void testRemoveFromCart() {
-            // Prepare test data
             Product product = new Product("Product 200", "Description 1", "Category 1", "Color 1", 10,
                     "Images/download.jpg", 10.0);
             Shop.products.add(product);
@@ -221,8 +220,6 @@ public class CustomerTest {
     @DisplayName("Test AddToCart method")
 
     class AddToCart {
-
-        
 
     @ParameterizedTest
     @CsvSource({

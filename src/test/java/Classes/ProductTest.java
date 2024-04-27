@@ -11,9 +11,7 @@ public class ProductTest {
 
     @BeforeEach
     void setUp() {
-        // Reset lastGeneratedId before each test
         Product.resetLastGeneratedId();
-        // Initialize a new product instance before each test
         product = new Product("Product 2", "Description 2", "Category 2",
                 "Color 2", 10, "Images/shoe3.png", 20.0);
     }

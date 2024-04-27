@@ -73,7 +73,6 @@ public class Order {
         recalculateOrderSubtotal();
     }
 
-    // Method to recalculate the order subtotal based on order items
     void recalculateOrderSubtotal() {
         double subtotal = 0.0;
         for (CartItem item : orderItems) {

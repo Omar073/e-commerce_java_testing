@@ -44,7 +44,6 @@ public class Customer extends Person {
 	}
 
 	public String addToCart(Product p, int quantity) {
-		// Check if quantity is valid
 		if (quantity <= 0) {
 			return "Error: Invalid quantity.";
 		}
