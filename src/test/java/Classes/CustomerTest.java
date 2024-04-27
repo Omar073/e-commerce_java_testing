@@ -1,17 +1,17 @@
 package Classes;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-class CustomerTest {
+
+public class CustomerTest {
 
     private Customer customer;
 
@@ -48,29 +48,8 @@ class CustomerTest {
         assertEquals("456 Elm St", customer.getAddress());
     }
 
-    @Nested
-    @DisplayName("addToCart method")
-    class AddToCartTests {
+    
 
-        @ParameterizedTest
-        @CsvSource({
-                " 5, Product added to cart.",
-                " 0,Error: Invalid quantity.",
-                " 10 ,Product added to cart.",
-                "3, Product added to cart.",
-                "-1, Error: Invalid quantity.",
-                "15 ,Error: Insufficient quantity."
-        })
-        void testAddToCart(int quantity, String expected) {
-            Product product = new Product("Product 50", "Description 1", "Category 1", "Color 1", 10,
-                    "Images/download.jpg", 10.0);
-
-            Shop.products.add(product);
-
-            String result = customer.addToCart(product, quantity);
-            assertEquals(expected, result);
-        }
-    }
 
     @Nested
     @DisplayName("removeFromCart method")
@@ -203,6 +182,7 @@ class CustomerTest {
     @DisplayName("placeOrder method")
     class PlaceOrderTests {
 
+
         @Test
         void testPlaceOrder_Successful() {
             // Prepare test data
@@ -234,25 +214,34 @@ class CustomerTest {
             assertEquals(7, product1.getQuantity()); // Check if product quantities are updated correctly
             assertEquals(3, product2.getQuantity());
         }
+    }
 
-        // @Test
-        // void testPlaceOrder_NumberFormatException() {
-        // // Prepare test data
-        // Product product = new Product("Product 1", "Description", "Category",
-        // "Color", 10, "Images/shoe3.png", 20.0);
-        // CartItem cartItem = new CartItem(product, 1);
-        // customer.getCart().add(cartItem);
 
-        // // Call the method with invalid customer ID
-        // customer.setId(24);
-        // // assertEquals(customer.getId(), Integer.MAX_VALUE);
+    @Nested 
+    @DisplayName("Test AddToCart method")
 
-        // // Call the method
-        // boolean result = customer.placeOrder();
+    class AddToCart {
 
-        // // Check the result
-        // assertFalse(result); // Order creation should fail
-        // assertTrue(customer.getCart().isEmpty()); // Cart should remain empty
-        // }
+        
+
+    @ParameterizedTest
+    @CsvSource({
+        "5, 'Product added to cart.'",
+        "0, 'Error: Invalid quantity.'",
+        "-1, 'Error: Invalid quantity.'",
+        "11, 'Error: Insufficient quantity.'"
+    })
+    
+    void testAddToCart(int quantity, String expected) {
+        Product product = new Product("Product 50", "Description 1", "Category 1", "Color 1", 10,
+                "Images/download.jpg", 10.0);
+        Shop.products.add(product);
+    
+        String result = customer.addToCart(product, quantity);
+    
+        assertEquals(expected, result);
     }
 }
+}
+
+

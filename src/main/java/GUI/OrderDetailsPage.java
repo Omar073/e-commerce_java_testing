@@ -54,14 +54,25 @@ public class OrderDetailsPage extends Application {
         ScrollPane scrollPane = new ScrollPane(accordion);
         scrollPane.setFitToWidth(true);
 
-        Button backButton = new Button("Back to Orders");
-        backButton.setOnAction(event -> {
-            primaryStage.close();
-            CustomerOrdersPage customerOrdersPage = new CustomerOrdersPage();
-            customerOrdersPage.start(new Stage());
-        });
+        
+
+
+
+
+     
+
 
         root.getChildren().add(scrollPane);
+
+                // add a return button
+                Button returnButton = new Button("Return"); 
+                returnButton.setOnAction(e -> {
+                    primaryStage.close();
+        
+                    CustomerOrdersPage customerOrdersPage = new CustomerOrdersPage();
+                    customerOrdersPage.start(new Stage());
+                });
+                root.getChildren().add(returnButton);
 
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
