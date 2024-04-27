@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -215,26 +214,6 @@ public class CustomerTest {
             assertEquals(7, product1.getQuantity()); // Check if product quantities are updated correctly
             assertEquals(3, product2.getQuantity());
         }
-
-        // @Test
-        // void testPlaceOrder_NumberFormatException() {
-        // // Prepare test data
-        // Product product = new Product("Product 1", "Description", "Category",
-        // "Color", 10, "Images/shoe3.png", 20.0);
-        // CartItem cartItem = new CartItem(product, 1);
-        // customer.getCart().add(cartItem);
-
-        // // Call the method with invalid customer ID
-        // customer.setId(24);
-        // // assertEquals(customer.getId(), Integer.MAX_VALUE);
-
-        // // Call the method
-        // boolean result = customer.placeOrder();
-
-        // // Check the result
-        // assertFalse(result); // Order creation should fail
-        // assertTrue(customer.getCart().isEmpty()); // Cart should remain empty
-        // }
     }
 
 
