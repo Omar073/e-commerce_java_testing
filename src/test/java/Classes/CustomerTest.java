@@ -218,9 +218,9 @@ public class CustomerTest {
 
 
     @Nested 
-    @DisplayName("Test Getters and Setters")
+    @DisplayName("Test AddToCart method")
 
-    class GettersAndSettersTests {
+    class AddToCart {
 
         
 
